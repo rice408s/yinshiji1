@@ -1,0 +1,215 @@
+// 定义主题色 - 更柔和的配色方案
+$primary: #8CBA80;        // 主色调 - 柔和的绿色
+$secondary: #CACF85;      // 次要色 - 淡黄绿
+$bg-white: #F4F3EE;      // 背景色 - 温暖的米白
+$accent: #92DCE5;        // 点缀色 - 清新的蓝
+
+.publish-modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: flex-end;
+
+  .content {
+    width: 100%;
+    height: auto;
+    background: #fff;
+    border-radius: 32px 32px 0 0;
+    padding: 24px 24px 32px;
+    animation: slideUp 0.3s ease-out;
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    .header {
+      flex: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 24px;
+
+      .title {
+        font-size: 40px;
+        font-weight: 600;
+        color: $primary;  // 主标题使用主色
+        text-align: center;
+        letter-spacing: 2px;
+
+        .subtitle {
+          display: block;
+          font-size: 24px;
+          font-weight: normal;
+          color: rgba(140, 186, 128, 0.6);  // 更淡的副标题
+          margin-top: 8px;
+          letter-spacing: 4px;
+        }
+      }
+
+      .close {
+        width: 72px;
+        height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 44px;
+        color: #999;
+        margin: -24px -16px 0 0;
+        transition: all 0.2s ease;
+
+        &:active {
+          transform: rotate(90deg);
+          color: #666;
+        }
+      }
+    }
+
+    .upload-section {
+      flex: none;
+      margin-bottom: 16px;
+      position: relative;
+
+      .preview-container {
+        position: relative;
+        width: 200px;  // 缩略图宽度
+        height: 200px;  // 缩略图高度
+        margin: 0 auto;  // 居中显示
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+        .preview-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .delete-btn {
+          position: absolute;
+          top: 8px;
+          right: 8px;
+          width: 44px;
+          height: 44px;
+          background: rgba(0, 0, 0, 0.5);
+          border-radius: 22px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.2s ease;
+
+          .icon {
+            color: #fff;
+            font-size: 32px;
+            font-weight: 300;
+            line-height: 1;
+          }
+
+          &:active {
+            transform: scale(0.9);
+            background: rgba(0, 0, 0, 0.7);
+          }
+        }
+      }
+
+      .upload-btn {
+        width: 200px !important;  // 与预览图同宽
+        height: 200px;  // 与预览图同高
+        margin: 0 auto;  // 居中显示
+        background: $bg-white;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px dashed rgba(140, 186, 128, 0.2);
+        transition: all 0.3s ease;
+        overflow: hidden;
+
+        &::after {
+          border: none;
+        }
+
+        .icon {
+          font-size: 72px;
+          color: $primary;  // 使用主色
+          transition: all 0.3s ease;
+        }
+
+        &:active {
+          background: rgba(140, 186, 128, 0.05);
+          border-color: $primary;
+        }
+      }
+    }
+
+    .input-section {
+      position: relative;
+      margin-bottom: 0;
+      padding: 16px 20px;
+      background: $bg-white;  // 使用背景色
+      border-radius: 16px;
+      margin-top: 16px;
+
+      .description-input {
+        width: 100%;
+        height: 44px;
+        min-height: 44px;
+        max-height: 132px;
+        background: transparent;
+        padding: 0;
+        font-size: 30px;
+        color: #333;  // 更深的文字颜色
+        line-height: 44px;
+        transition: height 0.2s ease;
+        overflow-y: auto;
+
+        &::placeholder {
+          color: rgba(140, 186, 128, 0.5);  // 更淡的占位符颜色
+        }
+      }
+    }
+
+    .submit-btn {
+      position: relative;
+      margin: 16px 0 0;
+      height: 96px;
+      line-height: 96px;
+      background: $primary;  // 使用纯色而不是渐变
+      color: #fff;
+      font-size: 32px;
+      font-weight: 600;
+      border-radius: 48px;
+      transition: all 0.3s ease;
+      overflow: hidden;
+
+      &::after {
+        border: none;
+      }
+
+      &:active {
+        transform: scale(0.98);
+        opacity: 0.9;
+      }
+
+      &[disabled] {
+        background: #f5f5f5;
+        color: #ccc;
+      }
+    }
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

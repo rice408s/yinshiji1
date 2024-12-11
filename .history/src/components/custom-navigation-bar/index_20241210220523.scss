@@ -1,0 +1,47 @@
+.custom-nav {
+  .status-bar,
+  .navigation-bar {
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    left: 0;
+    top: 0;
+  }
+
+  .navigation-bar {
+    top: var(--status-bar-height);
+  }
+
+  .nav-content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+
+    &.center {
+      justify-content: center;
+    }
+
+    .back {
+      width: 40px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      .icon {
+        width: 12px;
+        height: 12px;
+        border-left: 2px solid #333;
+        border-bottom: 2px solid #333;
+        transform: rotate(45deg);
+      }
+    }
+
+    .content {
+      flex: 1;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+  }
+}

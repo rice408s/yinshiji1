@@ -1,0 +1,465 @@
+// 定义主题色 - 更柔和的配色方案
+$primary: #8CBA80;        // 主色调 - 柔和的绿色
+$secondary: #CACF85;      // 次要色 - 淡黄绿
+$bg-white: #F4F3EE;      // 背景色 - 温暖的米白
+$accent: #92DCE5;        // 点缀色 - 清新的蓝
+
+.publish-modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.2);  // 更淡的遮罩
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: flex-end;
+
+  .content {
+    width: 100%;
+    height: auto;
+    max-height: 85vh;
+    background: #fff;  // 纯白背景
+    border-radius: 32px 32px 0 0;
+    padding: 24px 24px 32px;
+    animation: slideUp 0.3s ease-out;
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    .header {
+      flex: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 24px;
+
+      .title {
+        font-size: 40px;
+        font-weight: 600;
+        color: $primary;  // 主标题使用主色
+        text-align: center;
+        letter-spacing: 2px;
+
+        .subtitle {
+          display: block;
+          font-size: 24px;
+          font-weight: normal;
+          color: rgba(140, 186, 128, 0.6);  // 更淡的副标题
+          margin-top: 8px;
+          letter-spacing: 4px;
+        }
+      }
+
+      .close {
+        width: 72px;
+        height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 44px;
+        color: #999;
+        margin: -24px -16px 0 0;
+        transition: all 0.2s ease;
+
+        &:active {
+          transform: rotate(90deg);
+          color: #666;
+        }
+      }
+    }
+
+    .upload-section {
+      flex: none;
+      margin-bottom: 16px;
+      position: relative;
+
+      .preview-container {
+        position: relative;
+        width: 200px;  // 缩略图宽度
+        height: 200px;  // 缩略图高度
+        margin: 0 auto;  // 居中显示
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+        .preview-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .delete-btn {
+          position: absolute;
+          top: 8px;
+          right: 8px;
+          width: 44px;
+          height: 44px;
+          background: rgba(0, 0, 0, 0.5);
+          border-radius: 22px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.2s ease;
+
+          .icon {
+            color: #fff;
+            font-size: 32px;
+            font-weight: 300;
+            line-height: 1;
+          }
+
+          &:active {
+            transform: scale(0.9);
+            background: rgba(0, 0, 0, 0.7);
+          }
+        }
+
+        .upload-progress {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background: rgba(255, 255, 255, 0.8);
+          border-radius: 50%;
+          padding: 10px;
+        }
+
+        .loading-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(255, 255, 255, 0.8);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .loading-spinner {
+          width: 40px;
+          height: 40px;
+          border: 3px solid rgba(140, 186, 128, 0.2);
+          border-top-color: $primary;
+          border-radius: 50%;
+          animation: spin 1s linear infinite;
+        }
+      }
+
+      .upload-btn {
+        width: 200px !important;  // 与预览图同宽
+        height: 200px;  // 与预览图同高
+        margin: 0 auto;  // 居中显示
+        background: $bg-white;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px dashed rgba(140, 186, 128, 0.2);
+        transition: all 0.3s ease;
+        overflow: hidden;
+
+        &::after {
+          border: none;
+        }
+
+        .icon {
+          font-size: 72px;
+          color: $primary;  // 使用主色
+          transition: all 0.3s ease;
+        }
+
+        &:active {
+          background: rgba(140, 186, 128, 0.05);
+          border-color: $primary;
+        }
+      }
+    }
+
+    .input-section {
+      position: relative;
+      margin-bottom: 0;
+      padding: 16px 20px;
+      background: $bg-white;
+      border-radius: 16px;
+      margin-top: 16px;
+
+      .description-input {
+        width: 100%;
+        min-height: 44px;
+        max-height: 176px;
+        height: auto;
+        background: transparent;
+        padding: 0;
+        font-size: 30px;
+        color: #333;
+        line-height: 44px;
+        transition: height 0.2s ease;
+        overflow-y: auto;
+
+        // 隐藏滚动条 - WebKit 浏览器
+        &::-webkit-scrollbar {
+          display: none;
+        }
+
+        // 隐藏滚动条 - Firefox
+        scrollbar-width: none;
+
+        // 隐藏滚动条 - IE
+        -ms-overflow-style: none;
+
+        &::placeholder {
+          color: rgba(140, 186, 128, 0.5);
+        }
+      }
+    }
+
+    .submit-btn {
+      position: relative;
+      margin: 16px 0 0;
+      height: 96px;
+      line-height: 96px;
+      background: $primary;  // 使用纯色而不是渐变
+      color: #fff;
+      font-size: 32px;
+      font-weight: 600;
+      border-radius: 48px;
+      transition: all 0.3s ease;
+      overflow: hidden;
+
+      &::after {
+        border: none;
+      }
+
+      &:active {
+        transform: scale(0.98);
+        opacity: 0.9;
+      }
+
+      &[disabled] {
+        background: #f5f5f5;
+        color: #ccc;
+      }
+
+      &.save-btn {
+        margin-top: 32px;  // 增加与卡片的间距
+        background: $secondary;  // 使用次要色
+
+        &:active {
+          transform: scale(0.98);
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// 定义新的配色方案
+$surface-color: #E6EEF8;      // 背景基色
+$primary: #5B7DB1;           // 主色调 - 沉稳的蓝色
+$accent: #A7C5EB;           // 强调色 - 淡蓝色
+$text-primary: #2C3E50;     // 主要文字颜色
+$text-secondary: #647687;    // 次要文字颜色
+$success: #81B29A;          // 成功色 - 柔和的绿色
+$shadow-light: #F5F9FF;     // 亮部阴影
+$shadow-dark: #D1D9E6;      // 暗部阴影
+
+// 移除原有的 .food-card 相关样式，替换为新的样式
+.food-card {
+  background: $surface-color;
+  border-radius: 24px;
+  padding: 32px;
+  margin: 24px auto;
+  width: 92%;
+  box-shadow:
+    8px 8px 16px $shadow-dark,
+    -8px -8px 16px $shadow-light;
+
+  .food-header {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 32px;
+
+    .food-image-wrapper {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow:
+        inset 4px 4px 8px $shadow-dark,
+        inset -4px -4px 8px $shadow-light;
+
+      .food-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+
+    .food-info {
+      flex: 1;
+
+      .food-name-wrapper {
+        margin-bottom: 16px;
+
+        .food-name-input,
+        .food-name {
+          width: 100%;
+          font-size: 40px;
+          font-weight: 600;
+          color: $text-primary;
+          background: $surface-color;
+          padding: 12px 20px;
+          border-radius: 16px;
+          box-shadow:
+            inset 4px 4px 8px $shadow-dark,
+            inset -4px -4px 8px $shadow-light;
+          transition: all 0.3s ease;
+
+          &:focus {
+            box-shadow:
+              inset 6px 6px 10px $shadow-dark,
+              inset -6px -6px 10px $shadow-light;
+          }
+        }
+      }
+
+      .amount-wrapper {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+
+        .amount-input {
+          flex: 1;
+          max-width: 120px;
+          font-size: 32px;
+          color: $text-secondary;
+          background: $surface-color;
+          padding: 12px 20px;
+          border-radius: 12px;
+          text-align: center;
+          box-shadow:
+            inset 4px 4px 8px $shadow-dark,
+            inset -4px -4px 8px $shadow-light;
+          transition: all 0.3s ease;
+
+          &:focus {
+            color: $primary;
+            box-shadow:
+              inset 6px 6px 10px $shadow-dark,
+              inset -6px -6px 10px $shadow-light;
+          }
+        }
+      }
+    }
+  }
+
+  .nutrients-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    padding: 24px 0;
+
+    .nutrient-item {
+      padding: 24px;
+      border-radius: 20px;
+      background: $surface-color;
+      box-shadow:
+        6px 6px 12px $shadow-dark,
+        -6px -6px 12px $shadow-light;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+      }
+
+      .nutrient-label {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+
+        .icon {
+          font-size: 32px;
+          filter: grayscale(0.3);
+        }
+
+        .text {
+          font-size: 28px;
+          color: $text-secondary;
+          font-weight: 500;
+        }
+      }
+
+      .nutrient-value {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: $surface-color;
+        border-radius: 12px;
+        padding: 8px 16px;
+        box-shadow:
+          inset 4px 4px 8px $shadow-dark,
+          inset -4px -4px 8px $shadow-light;
+
+        .value-input {
+          width: 120px;
+          font-size: 36px;
+          font-weight: 600;
+          color: $primary;
+          background: transparent;
+          text-align: right;
+          padding: 4px;
+
+          &:focus {
+            color: darken($primary, 10%);
+          }
+        }
+
+        .unit {
+          font-size: 24px;
+          color: $text-secondary;
+          margin-left: 8px;
+        }
+      }
+
+      &.calories { .nutrient-label .icon { color: #FF6B6B; }}
+      &.protein { .nutrient-label .icon { color: #4ECDC4; }}
+      &.fat { .nutrient-label .icon { color: #FFD93D; }}
+      &.carbs { .nutrient-label .icon { color: #95E1D3; }}
+    }
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}

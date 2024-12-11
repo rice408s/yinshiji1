@@ -1,0 +1,35 @@
+.custom-nav {
+  background: #fff;
+  padding-top: env(safe-area-inset-top);
+  border-bottom: 1px solid #eee;
+
+  .nav-content {
+    position: relative;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .back-btn {
+      position: absolute;
+      left: 16px;
+      height: 44px;
+      width: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .iconfont {
+        font-size: 32px;
+        color: #333;
+      }
+    }
+
+    .title {
+      font-size: 34px;
+      font-weight: 500;
+      color: #333;
+    }
+  }
+}
+

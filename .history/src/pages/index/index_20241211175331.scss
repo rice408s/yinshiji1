@@ -1,0 +1,131 @@
+// 主题色
+$primary: #8CBA80;        // 主色调 - 柔和的绿色
+$secondary: #CACF85;      // 次要色 - 淡黄绿
+$bg-white: #F4F3EE;      // 背景色 - 温暖的米白
+$accent: #92DCE5;        // 点缀色 - 清新的蓝
+
+.index {
+  min-height: 100vh;
+  background: #f8f9fa;
+  position: relative;
+
+  .records-list {
+    height: 100vh;
+
+    .records-container {
+      min-height: 100vh;
+      padding: 20px;
+      padding-bottom: 140px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+
+      .date-group {
+        position: relative;
+        margin-bottom: 48px;
+        padding-left: 32px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .date-label {
+          position: absolute;
+          left: 0;
+          top: 16px;
+          font-size: 22px;
+          font-weight: 500;
+          color: #8CBA80;
+          padding: 8px 12px;
+          background: rgba(140, 186, 128, 0.08);
+          border-radius: 8px;
+          z-index: 1;
+          transform: translateX(-50%);
+          white-space: nowrap;
+          backdrop-filter: blur(8px);
+          box-shadow: 0 2px 12px rgba(140, 186, 128, 0.1);
+        }
+
+        .records-group {
+          position: relative;
+          padding-left: 20px;
+          margin-top: 48px;
+
+          &::before,
+          &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 2px;
+            background: linear-gradient(
+              to bottom,
+              rgba(140, 186, 128, 0),
+              rgba(140, 186, 128, 0.3) 20%,
+              rgba(140, 186, 128, 0.3) 80%,
+              rgba(140, 186, 128, 0)
+            );
+          }
+
+          &::before {
+            top: -32px;
+            height: 32px;
+          }
+
+          &::after {
+            top: 16px;
+            bottom: -16px;
+          }
+
+          .records-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 16px 0;
+          }
+        }
+      }
+
+      .loading-tip,
+      .no-more-tip {
+        text-align: center;
+        padding: 24px 0;
+        color: #999;
+        font-size: 24px;
+        font-weight: 300;
+      }
+    }
+  }
+
+  .float-publish-btn {
+    position: fixed;
+    right: 24px;
+    bottom: 100px;
+    width: 100px !important;
+    height: 100px;
+    padding: 0;
+    border-radius: 50%;
+    background: $primary;
+    box-shadow: 0 8px 24px rgba(140, 186, 128, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    transition: all 0.2s ease;
+
+    &::after {
+      border: none;
+    }
+
+    .plus {
+      color: #fff;
+      font-size: 48px;
+      font-weight: 300;
+      line-height: 1;
+    }
+
+    &:active {
+      transform: scale(0.95);
+      box-shadow: 0 4px 12px rgba(140, 186, 128, 0.2);
+    }
+  }
+}

@@ -1,0 +1,286 @@
+// 主题变量
+$primary-color: #007AFF;
+$secondary-color: #8E8E93;
+$success-color: #34C759;
+$warning-color: #FF9500;
+$danger-color: #FF3B30;
+$background: #F2F2F7;
+$text-primary: #000000;
+$text-secondary: #6E6E73;
+
+// 字体大小
+$font-xxl: 44px;    // 大标题
+$font-xl: 36px;     // 小标题
+$font-lg: 32px;     // 重要内容
+$font-md: 28px;     // 普通内容
+$font-sm: 24px;     // 次要内容
+
+// 间距
+$spacing-xxl: 48px;
+$spacing-xl: 32px;
+$spacing-lg: 24px;
+$spacing-md: 16px;
+$spacing-sm: 12px;
+
+// Mixins
+@mixin glass-morphism {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+@mixin depth-shadow {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.publish-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: flex-end;
+
+  .content {
+    width: 100%;
+    max-height: 92vh;
+    background: $background;
+    border-radius: 44px 44px 0 0;
+    padding: $spacing-xxl;
+    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    @include depth-shadow;
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: $spacing-xl;
+
+      .title {
+        font-size: $font-xxl;
+        font-weight: 700;
+        color: $text-primary;
+        letter-spacing: -0.5px;
+      }
+
+      .close {
+        width: 84px;
+        height: 84px;
+        font-size: $font-xl;
+        color: $text-secondary;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        margin: -$spacing-lg;
+        transition: all 0.2s;
+
+        &:active {
+          background: rgba(0, 0, 0, 0.05);
+          transform: scale(0.9);
+        }
+      }
+    }
+
+    .upload-section {
+      margin: $spacing-xl 0;
+
+      .preview-container {
+        width: 280px;
+        height: 280px;
+        margin: 0 auto;
+        border-radius: 32px;
+        overflow: hidden;
+        @include depth-shadow;
+        position: relative;
+
+        .preview-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .delete-btn {
+          position: absolute;
+          top: $spacing-md;
+          right: $spacing-md;
+          width: 64px;
+          height: 64px;
+          background: rgba(0, 0, 0, 0.4);
+          border-radius: 50%;
+          display: grid;
+          place-items: center;
+
+          .icon {
+            color: #fff;
+            font-size: $font-lg;
+          }
+
+          &:active {
+            transform: scale(0.9);
+            background: rgba(0, 0, 0, 0.6);
+          }
+        }
+
+        .loading-overlay {
+          position: absolute;
+          inset: 0;
+          @include glass-morphism;
+          display: grid;
+          place-items: center;
+        }
+      }
+
+      .upload-btn {
+        width: 280px;
+        height: 280px;
+        margin: 0 auto;
+        border-radius: 32px;
+        border: 3px dashed rgba(0, 0, 0, 0.1);
+        display: grid;
+        place-items: center;
+        transition: all 0.3s;
+
+        .icon {
+          font-size: 84px;
+          color: $primary-color;
+        }
+
+        &:active {
+          background: rgba(0, 0, 0, 0.02);
+          border-color: $primary-color;
+        }
+      }
+    }
+
+    .food-card {
+      @include glass-morphism;
+      border-radius: 32px;
+      padding: $spacing-xl;
+      margin-bottom: $spacing-xl;
+
+      .food-header {
+        display: flex;
+        gap: $spacing-lg;
+        margin-bottom: $spacing-xl;
+
+        .food-info {
+          flex: 1;
+
+          .food-name {
+            font-size: $font-xl;
+            font-weight: 600;
+            color: $text-primary;
+            margin-bottom: $spacing-md;
+            padding: $spacing-md;
+            background: rgba(0, 0, 0, 0.03);
+            border-radius: 16px;
+          }
+
+          .amount-wrapper {
+            display: flex;
+            gap: $spacing-md;
+
+            .amount-input {
+              flex: 1;
+              font-size: $font-lg;
+              padding: $spacing-md;
+              background: rgba(0, 0, 0, 0.03);
+              border-radius: 16px;
+              text-align: center;
+            }
+          }
+        }
+      }
+
+      .nutrients-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: $spacing-lg;
+
+        .nutrient-item {
+          padding: $spacing-lg;
+          border-radius: 24px;
+          @include glass-morphism;
+
+          .nutrient-label {
+            display: flex;
+            align-items: center;
+            gap: $spacing-sm;
+            margin-bottom: $spacing-md;
+
+            .icon {
+              font-size: $font-xl;
+            }
+
+            Text {
+              font-size: $font-md;
+              color: $text-secondary;
+            }
+          }
+
+          .nutrient-value {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+
+            .value-input {
+              font-size: $font-xl;
+              font-weight: 600;
+              color: $text-primary;
+              text-align: right;
+              width: 120px;
+            }
+
+            .unit {
+              font-size: $font-md;
+              color: $text-secondary;
+            }
+          }
+
+          &.calories { background: rgba($danger-color, 0.1); }
+          &.protein { background: rgba($primary-color, 0.1); }
+          &.fat { background: rgba($warning-color, 0.1); }
+          &.carbs { background: rgba($success-color, 0.1); }
+        }
+      }
+    }
+
+    .submit-btn {
+      height: 112px;
+      margin-top: $spacing-xl;
+      font-size: $font-lg;
+      font-weight: 600;
+      color: #fff;
+      background: $primary-color;
+      border-radius: 56px;
+      transition: all 0.3s;
+
+      &:active {
+        transform: scale(0.98);
+        opacity: 0.9;
+      }
+
+      &[disabled] {
+        background: rgba(0, 0, 0, 0.1);
+        color: rgba(0, 0, 0, 0.3);
+      }
+
+      &.save-btn {
+        margin-top: $spacing-lg;
+        background: $success-color;
+      }
+    }
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

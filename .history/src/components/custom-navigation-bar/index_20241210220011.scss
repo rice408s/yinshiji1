@@ -1,0 +1,44 @@
+.custom-nav {
+  color: #fff;
+
+  .status-bar,
+  .navigation-bar {
+    position: fixed;
+    z-index: 10000;
+    width: 100%;
+    background-color: #000;
+  }
+
+  .nav-content {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+
+    &.center {
+      justify-content: center;
+    }
+
+    .back {
+      width: 40px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .icon {
+        width: 10px;
+        height: 10px;
+        border-left: 2px solid #fff;
+        border-bottom: 2px solid #fff;
+        transform: rotate(45deg);
+      }
+    }
+
+    .content {
+      flex: 1;
+      height: 100%;
+    }
+  }
+}

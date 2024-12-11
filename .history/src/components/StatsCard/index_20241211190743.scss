@@ -1,0 +1,68 @@
+.stats-card {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+
+  .stats-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+
+    .title {
+      font-size: 28px;
+      color: #262626;
+      font-weight: 600;
+    }
+
+    .date {
+      font-size: 24px;
+      color: #595959;
+      background: #f5f5f5;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+
+    .stat-item {
+      background: #fafafa;
+      padding: 16px 12px;
+      border-radius: 12px;
+      text-align: center;
+
+      .value {
+        font-size: 36px;
+        font-weight: 600;
+        margin-bottom: 4px;
+        line-height: 1.2;
+
+        &.protein {
+          color: #1677ff; // 蓝色 - 蛋白质
+        }
+        &.fat {
+          color: #fa541c; // 橙色 - 脂肪
+        }
+        &.carbs {
+          color: #52c41a; // 绿色 - 碳水
+        }
+      }
+
+      .label {
+        font-size: 22px;
+        color: #595959;
+      }
+    }
+  }
+}

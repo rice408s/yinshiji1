@@ -1,0 +1,122 @@
+// 主题色
+$primary: #8CBA80;        // 主色调 - 柔和的绿色
+$secondary: #CACF85;      // 次要色 - 淡黄绿
+$bg-white: #F4F3EE;      // 背景色 - 温暖的米白
+$accent: #92DCE5;        // 点缀色 - 清新的蓝
+
+.index {
+  min-height: 100vh;
+  background: #f8f9fa;
+  position: relative;
+
+  .records-list {
+    height: 100vh;
+
+    .records-container {
+      min-height: 100vh;
+      padding: 40px 32px;
+      padding-bottom: 140px;
+
+      .date-group {
+        position: relative;
+        margin-bottom: 64px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .date-label {
+          display: flex;
+          align-items: center;
+          margin-bottom: 40px;
+          padding: 0 24px;
+
+          &::before,
+          &::after {
+            content: '';
+            height: 1px;
+            background: linear-gradient(
+              to right,
+              rgba(140, 186, 128, 0.3),
+              rgba(140, 186, 128, 0.1)
+            );
+            flex: 1;
+          }
+
+          &::before {
+            margin-right: 24px;
+            background: linear-gradient(
+              to left,
+              rgba(140, 186, 128, 0.3),
+              rgba(140, 186, 128, 0.1)
+            );
+          }
+
+          &::after {
+            margin-left: 24px;
+          }
+
+          .date-text {
+            font-size: 26px;
+            color: $primary;
+            font-weight: 500;
+            padding: 8px 24px;
+            background: rgba(140, 186, 128, 0.08);
+            border-radius: 24px;
+            backdrop-filter: blur(8px);
+            white-space: nowrap;
+          }
+        }
+
+        .records-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 32px 24px;
+          padding: 0 16px;
+        }
+      }
+
+      .loading-tip,
+      .no-more-tip {
+        text-align: center;
+        padding: 32px 0;
+        color: #999;
+        font-size: 26px;
+        font-weight: 300;
+      }
+    }
+  }
+
+  .float-publish-btn {
+    position: fixed;
+    right: 24px;
+    bottom: 100px;
+    width: 100px !important;
+    height: 100px;
+    padding: 0;
+    border-radius: 50%;
+    background: $primary;
+    box-shadow: 0 8px 24px rgba(140, 186, 128, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    transition: all 0.2s ease;
+
+    &::after {
+      border: none;
+    }
+
+    .plus {
+      color: #fff;
+      font-size: 48px;
+      font-weight: 300;
+      line-height: 1;
+    }
+
+    &:active {
+      transform: scale(0.95);
+      box-shadow: 0 4px 12px rgba(140, 186, 128, 0.2);
+    }
+  }
+}

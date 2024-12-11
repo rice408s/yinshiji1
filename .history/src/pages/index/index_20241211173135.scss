@@ -1,0 +1,136 @@
+// 主题色
+$primary: #8CBA80;        // 主色调 - 柔和的绿色
+$secondary: #CACF85;      // 次要色 - 淡黄绿
+$bg-white: #F4F3EE;      // 背景色 - 温暖的米白
+$accent: #92DCE5;        // 点缀色 - 清新的蓝
+
+.index {
+  min-height: 100vh;
+  background: #f8f9fa;
+  position: relative;
+
+  .records-list {
+    height: 100vh;
+
+    .records-container {
+      min-height: 100vh;
+      padding: 16px;
+      padding-bottom: 140px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+
+      .date-group {
+        position: relative;
+        margin-bottom: 32px;
+        padding-left: 40px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .date-label {
+          position: absolute;
+          left: 0;
+          top: 16px;
+          font-size: 20px;
+          color: #999;
+          padding: 4px 8px;
+          background: #fff;
+          border-radius: 4px;
+          z-index: 1;
+          transform: translateX(-50%);
+          white-space: nowrap;
+        }
+
+        .records-group {
+          position: relative;
+          padding-left: 20px;
+          margin-top: 48px;
+
+          &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: -32px;
+            height: 16px;
+            width: 1px;
+            background: rgba(140, 186, 128, 0.2);
+          }
+
+          &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 16px;
+            bottom: 0;
+            width: 1px;
+            background: rgba(140, 186, 128, 0.2);
+          }
+
+          .record-item {
+            position: relative;
+            margin-bottom: 20px;
+
+            &::before {
+              content: '';
+              position: absolute;
+              left: -20px;
+              top: 50%;
+              width: 6px;
+              height: 6px;
+              background: $primary;
+              border-radius: 50%;
+              transform: translateY(-50%);
+            }
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+
+      .loading-tip,
+      .no-more-tip {
+        text-align: center;
+        padding: 20px 0;
+        color: #999;
+        font-size: 24px;
+      }
+    }
+  }
+
+  .float-publish-btn {
+    position: fixed;
+    right: 24px;
+    bottom: 100px;
+    width: 100px !important;
+    height: 100px;
+    padding: 0;
+    border-radius: 50%;
+    background: $primary;
+    box-shadow: 0 8px 24px rgba(140, 186, 128, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    transition: all 0.2s ease;
+
+    &::after {
+      border: none;
+    }
+
+    .plus {
+      color: #fff;
+      font-size: 48px;
+      font-weight: 300;
+      line-height: 1;
+    }
+
+    &:active {
+      transform: scale(0.95);
+      box-shadow: 0 4px 12px rgba(140, 186, 128, 0.2);
+    }
+  }
+}

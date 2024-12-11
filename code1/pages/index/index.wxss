@@ -1,0 +1,13 @@
+/* pages/index/index.wxss */
+.button{
+  width: 480rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 10rpx;
+  background-color: #09bb07;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 13pt;
+  margin: 20rpx auto;
+}

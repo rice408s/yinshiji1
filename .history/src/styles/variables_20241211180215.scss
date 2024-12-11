@@ -1,0 +1,17 @@
+// 设计系统变量
+$spacing-base: 16px;  // 基础间距单位
+$spacing-grid: 24px;  // 网格间距
+$radius-lg: 24px;     // 大圆角
+$radius-md: 16px;     // 中等圆角
+
+// 颜色系统
+$color-primary: #8CBA80;
+$color-surface: #fff;
+$color-background: #f8f9fa;
+$color-text-primary: #2C3E50;
+$color-text-secondary: #95A5A6;
+
+// 阴影系统
+$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+$shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+$shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);

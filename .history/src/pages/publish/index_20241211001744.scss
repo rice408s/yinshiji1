@@ -1,0 +1,140 @@
+.publish-mask {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: transparent;
+  z-index: 9999;
+  display: flex;
+  align-items: flex-end;
+
+  &::before {
+    content: '';
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+  }
+
+  .mask-content {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    background: #fff;
+    border-radius: 24px 24px 0 0;
+    padding: 20px;
+    animation: slideUp 0.3s ease-out;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+
+    .mask-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+
+      .title {
+        font-size: 32px;
+        font-weight: 500;
+        color: #333;
+      }
+
+      .close {
+        font-size: 40px;
+        color: #999;
+        padding: 10px;
+      }
+    }
+
+    .upload-section {
+      margin-bottom: 16px;
+
+      .preview-image {
+        width: 100%;
+        height: 160px;
+        border-radius: 12px;
+        object-fit: cover;
+      }
+
+      .upload-btn {
+        width: 100% !important;
+        height: 160px;
+        background: #f5f5f5;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 2px dashed #ddd;
+
+        &::after {
+          border: none;
+        }
+
+        .icon {
+          font-size: 48px;
+          margin-bottom: 12px;
+        }
+
+        .text {
+          font-size: 28px;
+          color: #666;
+        }
+      }
+    }
+
+    .input-section {
+      margin-bottom: 16px;
+
+      .description-input {
+        width: 100%;
+        height: 80px;
+        background: #f5f5f5;
+        border-radius: 12px;
+        padding: 16px;
+        font-size: 28px;
+        color: #333;
+      }
+    }
+
+    .submit-btn {
+      width: calc(100% - 40px) !important;
+      height: 88px;
+      line-height: 88px;
+      background: #07c160;
+      color: #fff;
+      font-size: 32px;
+      border-radius: 44px;
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+
+      &::after {
+        border: none;
+      }
+
+      &:active {
+        opacity: 0.9;
+      }
+
+      &[disabled] {
+        background: #ddd;
+        color: #999;
+      }
+    }
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

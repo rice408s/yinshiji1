@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "httpApi": {
+      "addWhitelist": [
+        "dashscope.aliyuncs.com"
+      ]
+    }
+  },
+  "timeout": 20,
+  "triggers": [],
+  "retryNum": 3,
+  "memorySize": 512
+}

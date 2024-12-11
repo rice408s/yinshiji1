@@ -1,0 +1,174 @@
+// 主题色
+$primary: #8CBA80;        // 主色调 - 柔和的绿色
+$secondary: #CACF85;      // 次要色 - 淡黄绿
+$bg-white: #F4F3EE;      // 背景色 - 温暖的米白
+$accent: #92DCE5;        // 点缀色 - 清新的蓝
+
+.index {
+  min-height: 100vh;
+  background: #f8f9fa;
+  position: relative;
+
+  .records-list {
+    height: 100vh;
+
+    .records-container {
+      padding: 16px;
+      padding-bottom: 140px;
+    }
+
+    .record-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      transition: all 0.2s ease;
+      display: flex;
+      padding: 16px;
+      gap: 16px;
+      align-items: flex-start;
+
+      &:active {
+        transform: scale(0.98);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      }
+
+      .food-image {
+        width: 160px;
+        height: 160px;
+        border-radius: 16px;
+        object-fit: cover;
+        flex-shrink: 0;
+      }
+
+      .food-info {
+        flex: 1;
+        min-width: 0; // 防止文字溢出
+
+        .food-header {
+          margin-bottom: 12px;
+
+          .food-name {
+            font-size: 32px;
+            font-weight: 600;
+            color: #333;
+            display: block;
+            margin-bottom: 8px;
+            line-height: 1.2;
+          }
+
+          .food-amount {
+            font-size: 24px;
+            color: #666;
+            display: inline-flex;
+            align-items: center;
+            background: rgba(140, 186, 128, 0.08);
+            padding: 6px 12px;
+            border-radius: 12px;
+
+            &::before {
+              content: '⚖️';
+              margin-right: 6px;
+              font-size: 20px;
+            }
+          }
+        }
+
+        .nutrients-row {
+          display: flex;
+          gap: 12px;
+          margin-bottom: 12px;
+          padding: 12px;
+          background: rgba(140, 186, 128, 0.06);
+          border-radius: 12px;
+
+          .nutrient-item {
+            flex: 1;
+            text-align: center;
+            position: relative;
+
+            &:not(:last-child)::after {
+              content: '';
+              position: absolute;
+              right: -6px;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 1px;
+              height: 70%;
+              background: rgba(140, 186, 128, 0.15);
+            }
+
+            .value {
+              font-size: 28px;
+              font-weight: 600;
+              color: $primary;
+              display: block;
+              margin-bottom: 4px;
+            }
+
+            .label {
+              font-size: 20px;
+              color: #666;
+            }
+          }
+        }
+
+        .description {
+          font-size: 24px;
+          color: #666;
+          line-height: 1.5;
+          background: $bg-white;
+          padding: 12px 16px;
+          border-radius: 12px;
+          position: relative;
+          margin-top: 12px;
+
+          &::before {
+            content: '"';
+            position: absolute;
+            left: 10px;
+            top: 4px;
+            font-size: 32px;
+            color: rgba(140, 186, 128, 0.2);
+            font-family: serif;
+          }
+        }
+      }
+    }
+  }
+
+  // 悬浮按钮样式
+  .float-publish-btn {
+    position: fixed;
+    right: 24px;
+    bottom: 100px;
+    width: 100px !important;
+    height: 100px;
+    padding: 0;
+    border-radius: 50%;
+    background: $primary;
+    box-shadow: 0 8px 24px rgba(140, 186, 128, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    transition: all 0.2s ease;
+
+    &::after {
+      border: none;
+    }
+
+    .plus {
+      color: #fff;
+      font-size: 48px;
+      font-weight: 300;
+      line-height: 1;
+    }
+
+    &:active {
+      transform: scale(0.95);
+      box-shadow: 0 4px 12px rgba(140, 186, 128, 0.2);
+    }
+  }
+}

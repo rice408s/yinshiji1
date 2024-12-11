@@ -1,0 +1,22 @@
+/* pages/orderCount/index.wxss */
+@import "/assets/css/flex.wxss";
+
+.top .title{
+  margin-right: 10rpx;
+}
+.top .picker .name{
+  border: 1rpx solid #fff;
+  padding: 3rpx 30rpx 3rpx 10rpx;
+  position: relative;
+}
+.top .picker .name::after{
+  content: '';
+  position: absolute;
+  top: calc(50% + 10rpx);
+  right: 5rpx;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border: 10rpx solid transparent;
+  border-top-color: #fff;
+}

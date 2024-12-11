@@ -1,0 +1,131 @@
+.food-card {
+  background: #fff;
+  margin: 0 16px 12px;
+  padding: 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 0;
+    height: 1px;
+    background: #f5f5f5;
+  }
+
+  &:last-child::after {
+    display: none;
+  }
+
+  .food-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+
+    .food-image {
+      width: 108px;
+      height: 108px;
+      border-radius: 12px;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: #f8f9fa;
+    }
+
+    .food-icon {
+      width: 48px;
+      height: 48px;
+      font-size: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .food-info {
+      flex: 1;
+      min-width: 0;
+      padding-top: 4px;
+
+      .food-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 12px;
+
+        .name {
+          font-size: 32px;
+          color: #333;
+          font-weight: 500;
+          flex: 1;
+          margin-right: 16px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        .amount {
+          font-size: 30px;
+          color: #666;
+          flex-shrink: 0;
+        }
+      }
+
+      .food-detail {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 26px;
+
+        .calories {
+          color: #ff9f67;
+          font-weight: 500;
+        }
+
+        .nutrients {
+          color: #999;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          padding-left: 8px;
+          position: relative;
+
+          &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 16px;
+            background: #e8e8e8;
+          }
+        }
+      }
+    }
+  }
+
+  .time {
+    color: #999;
+    font-size: 24px;
+    flex-shrink: 0;
+    padding-left: 24px;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 16px;
+      background: #e8e8e8;
+    }
+  }
+}

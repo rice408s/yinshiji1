@@ -1,0 +1,8 @@
+<view class="page">
+  <custom-navigation-bar id="customNavigationBar" bar-style="2">
+    <view style="width: 100%;height: 100%;text-align: center;" class="flex-col-center">
+      门店列表
+    </view>
+  </custom-navigation-bar>
+  预留自定义导航中部区域
+</view>

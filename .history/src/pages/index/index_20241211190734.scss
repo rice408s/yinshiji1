@@ -1,0 +1,149 @@
+// 主题色
+$primary: #4263eb;      // 主色调 - 靛蓝色
+$success: #12b886;      // 成功色 - 薄荷绿
+$warning: #f59f00;      // 警告色 - 金黄
+$error: #f03e3e;        // 错误色 - 朱红
+$text: #212529;         // 主文本色
+$text-secondary: #495057; // 次要文本色
+$bg-base: #f8f9fa;      // 背景色 - 更柔和的灰
+
+// 营养素配色
+$protein-color: #4263eb; // 蛋白质 - 靛蓝
+$fat-color: #f76707;    // 脂肪 - 橙色
+$carbs-color: #37b24d;  // 碳水 - 翠绿
+
+// 添加按钮专用渐变色
+$btn-gradient-from: #12b886; // 薄荷绿起始色
+$btn-gradient-to: #20c997;   // 薄荷绿结束色
+
+.index {
+  min-height: 100vh;
+  background: $bg-base;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-x: hidden;
+
+  // 固定头部区域
+  .header-section {
+    flex-shrink: 0;
+    padding: 12px 16px;
+    background: $bg-base;
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  // 可滚动的记录列表
+  .records-list {
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    padding: 0 16px;
+    width: 100%;
+    box-sizing: border-box;
+
+    .records-container {
+      padding: 12px 0;
+      padding-bottom: calc(140px + env(safe-area-inset-bottom));
+      width: 100%;
+      box-sizing: border-box;
+
+      .records-grid {
+        width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+  }
+
+  // 发布按钮
+  .float-publish-btn {
+    position: fixed;
+    right: 24px;
+    bottom: calc(24px + env(safe-area-inset-bottom));
+    width: 120px !important;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, $btn-gradient-from, $btn-gradient-to);
+    box-shadow:
+      0 8px 20px rgba(18, 184, 134, 0.25),
+      0 4px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+
+    &::before {
+      content: '记录';
+      position: absolute;
+      font-size: 24px;
+      color: #fff;
+      font-weight: 500;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.2s ease;
+    }
+
+    .plus {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      margin: 0;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        background: #fff;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+      }
+
+      &::before {
+        width: 40px;
+        height: 4px;
+        top: 18px;
+        left: 0;
+      }
+
+      &::after {
+        width: 4px;
+        height: 40px;
+        left: 18px;
+        top: 0;
+      }
+    }
+
+    &:active {
+      transform: scale(0.92);
+      box-shadow:
+        0 4px 12px rgba(18, 184, 134, 0.2),
+        0 2px 4px rgba(0, 0, 0, 0.08);
+
+      &::before {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .plus {
+        &::before,
+        &::after {
+          transform: scale(0.9);
+        }
+      }
+    }
+  }
+}
+
+// 适配 iPhone 底部安全区域
+:root {
+  --safe-area-inset-bottom: env(safe-area-inset-bottom);
+}
+

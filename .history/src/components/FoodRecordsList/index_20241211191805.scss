@@ -1,0 +1,37 @@
+.records-list {
+  flex: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  padding: 0 16px;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .records-container {
+    padding: 12px 0;
+    padding-bottom: calc(140px + env(safe-area-inset-bottom));
+    width: 100%;
+    max-width: calc(800px - 32px);
+    box-sizing: border-box;
+
+    .records-grid {
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      .record-item {
+        width: 100%;
+
+        .food-card {
+          width: 100%;
+          // 其他样式保持不变
+        }
+      }
+    }
+  }
+}

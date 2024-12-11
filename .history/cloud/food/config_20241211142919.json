@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "httpApi": {
+      "addWhitelist": [
+        "jsonplaceholder.typicode.com",
+        "dashscope.aliyuncs.com"
+      ]
+    }
+  }
+}

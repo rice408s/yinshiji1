@@ -1,0 +1,87 @@
+// 主题色
+$primary: #8CBA80;        // 主色调 - 柔和的绿色
+$secondary: #CACF85;      // 次要色 - 淡黄绿
+$bg-white: #F4F3EE;      // 背景色 - 温暖的米白
+$accent: #92DCE5;        // 点缀色 - 清新的蓝
+
+.index {
+  min-height: 100vh;
+  background: #f8f9fa;
+  position: relative;
+
+  .records-list {
+    height: 100vh;
+
+    .records-container {
+      min-height: 100vh;
+      padding: 8px;
+      background: #f8f9fa;
+
+      .date-group {
+        margin-bottom: 32px;
+        position: relative;
+
+        .date-label {
+          padding: 8px 16px;
+          background: #fff;
+          border-radius: 16px;
+          display: inline-block;
+          margin-bottom: 16px;
+          margin-left: 8px;
+          font-size: 24px;
+          font-weight: 600;
+          color: #666;
+        }
+
+        .records-group {
+          .records-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+          }
+        }
+      }
+
+      .loading-tip,
+      .no-more-tip {
+        text-align: center;
+        padding: 20px;
+        color: #999;
+        font-size: 24px;
+      }
+    }
+  }
+
+  .float-publish-btn {
+    position: fixed;
+    right: 24px;
+    bottom: 100px;
+    width: 100px !important;
+    height: 100px;
+    padding: 0;
+    border-radius: 50%;
+    background: $primary;
+    box-shadow: 0 8px 24px rgba(140, 186, 128, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    transition: all 0.2s ease;
+
+    &::after {
+      border: none;
+    }
+
+    .plus {
+      color: #fff;
+      font-size: 48px;
+      font-weight: 300;
+      line-height: 1;
+    }
+
+    &:active {
+      transform: scale(0.95);
+      box-shadow: 0 4px 12px rgba(140, 186, 128, 0.2);
+    }
+  }
+}

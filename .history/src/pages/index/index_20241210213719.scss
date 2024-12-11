@@ -1,0 +1,202 @@
+.index {
+  min-height: 100vh;
+  background: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+
+  .custom-nav {
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+
+    .nav-content {
+      height: 44px;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+
+      .avatar-wrapper {
+        width: 32px;
+        height: 32px;
+        border-radius: 16px;
+        overflow: hidden;
+        margin-right: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+        .avatar {
+          width: 100%;
+          height: 100%;
+        }
+
+        &:active {
+          opacity: 0.8;
+        }
+      }
+
+      .title {
+        font-size: 34px;
+        font-weight: 500;
+        color: #333;
+      }
+    }
+  }
+
+  .content-area {
+    flex: 1;
+    padding: 20px;
+    margin-top: calc(44px + var(--status-bar-height));
+    overflow-y: auto;
+
+    .empty-tip {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .text {
+        font-size: 28px;
+        color: #999;
+      }
+    }
+
+    .preview-section {
+      margin-bottom: 20px;
+
+      .preview-image {
+        width: 100%;
+        max-height: 400px;
+        border-radius: 12px;
+      }
+    }
+
+    .analysis-section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+
+      .food-name {
+        font-size: 32px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .nutrition-info {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-bottom: 20px;
+
+        .item {
+          background: #f8f9fa;
+          padding: 16px;
+          border-radius: 8px;
+          text-align: center;
+
+          .label {
+            font-size: 24px;
+            color: #666;
+            margin-bottom: 8px;
+            display: block;
+          }
+
+          .value {
+            font-size: 28px;
+            color: #333;
+            font-weight: 500;
+          }
+        }
+      }
+
+      .description {
+        font-size: 28px;
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      .save-btn {
+        width: 100% !important;
+        height: 80px;
+        line-height: 80px;
+        background: #07c160;
+        color: #fff;
+        font-size: 28px;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  .input-area {
+    background: #fff;
+    padding: 20px;
+    border-top: 1px solid #eee;
+
+    .input-wrapper {
+      display: flex;
+      align-items: flex-end;
+      gap: 16px;
+
+      .photo-btn {
+        width: 64px !important;
+        height: 64px;
+        padding: 0;
+        margin: 0;
+        background: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &::after {
+          border: none;
+        }
+
+        .iconfont {
+          font-size: 48px;
+          color: #07c160;
+        }
+      }
+
+      .input-box {
+        flex: 1;
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 16px;
+        min-height: 64px;
+
+        .content-input {
+          width: 100%;
+          font-size: 28px;
+          line-height: 1.5;
+          min-height: 32px;
+        }
+      }
+
+      .send-btn {
+        width: 120px !important;
+        height: 64px;
+        line-height: 64px;
+        font-size: 28px;
+        color: #fff;
+        background: #ddd;
+        border-radius: 8px;
+        padding: 0;
+        margin: 0;
+
+        &.active {
+          background: #07c160;
+        }
+
+        &::after {
+          border: none;
+        }
+      }
+    }
+  }
+}

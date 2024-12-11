@@ -1,0 +1,18 @@
+<navigator url="/pages/user/index" class="button">
+  左侧及中部预留空间
+</navigator>
+<navigator url="/pages/store/index" class="button">
+  中部预留空间
+</navigator>
+<navigator url="/pages/storeDetail/index" class="button">
+  透明顶部导航
+</navigator>
+<navigator url="/pages/share/index" class="button">
+  自定义文字/背景色
+</navigator>
+<navigator url="/pages/search/index" class="button">
+  示例：顶部搜索
+</navigator>
+<navigator url="/pages/orderCount/index" class="button">
+  示例：顶部picker切换
+</navigator>

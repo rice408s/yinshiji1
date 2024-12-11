@@ -1,0 +1,183 @@
+// 主题色
+$primary: #8CBA80;        // 主色调 - 柔和的绿色
+$secondary: #CACF85;      // 次要色 - 淡黄绿
+$bg-white: #F4F3EE;      // 背景色 - 温暖的米白
+$accent: #92DCE5;        // 点缀色 - 清新的蓝
+
+.index {
+  min-height: 100vh;
+  background: #f8f9fa;
+  position: relative;
+
+  .records-list {
+    height: 100vh;
+
+    .records-container {
+      min-height: 100vh;
+      padding: 16px;
+      padding-bottom: 140px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+
+      .date-group {
+        position: relative;
+        margin-bottom: 40px;
+        padding-left: 100px; // 为时间轴留出更多空间
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .date-label {
+          position: absolute;
+          left: 16px;
+          top: 16px;
+          background: rgba(140, 186, 128, 0.1);
+          padding: 12px 16px;
+          border-radius: 12px;
+          color: $primary;
+          font-size: 26px;
+          font-weight: 500;
+
+          // 添加小箭头
+          &::after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-left: 8px solid rgba(140, 186, 128, 0.1);
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+          }
+        }
+
+        .records-group {
+          position: relative;
+          padding-left: 32px;
+
+          &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 32px; // ���日期标签下方开始
+            bottom: 32px;
+            width: 2px;
+            background: linear-gradient(
+              to bottom,
+              transparent,
+              $primary 10%,
+              $primary 90%,
+              transparent
+            );
+          }
+
+          .record-item {
+            position: relative;
+            margin-bottom: 24px;
+
+            &::before {
+              content: '';
+              position: absolute;
+              left: -32px;
+              top: 50%;
+              width: 12px;
+              height: 12px;
+              border: 2px solid $primary;
+              background: white;
+              border-radius: 50%;
+              transform: translateY(-50%);
+              transition: all 0.2s ease;
+              box-shadow: 0 0 0 4px rgba(140, 186, 128, 0.1);
+            }
+
+            &:hover {
+              transform: translateX(4px);
+
+              &::before {
+                background: $primary;
+                box-shadow: 0 0 0 6px rgba(140, 186, 128, 0.2);
+              }
+            }
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+        }
+
+        // 添加日期分隔线
+        &::after {
+          content: '';
+          position: absolute;
+          left: 100px;
+          right: 0;
+          top: 32px;
+          height: 1px;
+          background: linear-gradient(
+            to right,
+            rgba(140, 186, 128, 0.2),
+            transparent 80%
+          );
+        }
+      }
+
+      .loading-tip,
+      .no-more-tip {
+        text-align: center;
+        padding: 24px 0;
+        color: #999;
+        font-size: 24px;
+        font-weight: 300;
+      }
+    }
+  }
+
+  .float-publish-btn {
+    position: fixed;
+    right: 24px;
+    bottom: 100px;
+    width: 100px !important;
+    height: 100px;
+    padding: 0;
+    border-radius: 50%;
+    background: $primary;
+    box-shadow: 0 8px 24px rgba(140, 186, 128, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    transition: all 0.2s ease;
+
+    &::after {
+      border: none;
+    }
+
+    .plus {
+      color: #fff;
+      font-size: 48px;
+      font-weight: 300;
+      line-height: 1;
+    }
+
+    &:active {
+      transform: scale(0.95);
+      box-shadow: 0 4px 12px rgba(140, 186, 128, 0.2);
+    }
+  }
+}
+
+.scrolling {
+  pointer-events: none;
+
+  .record-item {
+    opacity: 0.8;
+    transform: translateX(0) !important;
+
+    &::before {
+      background: white !important;
+      box-shadow: 0 0 0 4px rgba(140, 186, 128, 0.1) !important;
+    }
+  }
+}

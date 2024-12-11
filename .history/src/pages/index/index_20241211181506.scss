@@ -1,0 +1,169 @@
+// 主题色
+$primary: #8CBA80;        // 主色调 - 柔和的绿色
+$secondary: #CACF85;      // 次要色 - 淡黄绿
+$bg-white: #F4F3EE;      // 背景色 - 温暖的米白
+$accent: #92DCE5;        // 点缀色 - 清新的蓝
+
+.index {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa, #fff);
+  position: relative;
+
+  .records-list {
+    height: 100vh;
+
+    .records-container {
+      min-height: 100vh;
+      padding: 40px;
+      padding-bottom: 140px;
+
+      .date-group {
+        position: relative;
+        margin-bottom: 72px;
+        animation: slideUp 0.6s ease backwards;
+
+        @for $i from 1 through 10 {
+          &:nth-child(#{$i}) {
+            animation-delay: $i * 0.1s;
+          }
+        }
+
+        .date-label {
+          display: flex;
+          align-items: center;
+          margin: 60px 0 32px;
+          padding: 0 32px;
+
+          &::before,
+          &::after {
+            content: '';
+            height: 1px;
+            background: linear-gradient(
+              to right,
+              rgba(140, 186, 128, 0.15),
+              rgba(140, 186, 128, 0.05)
+            );
+            flex: 1;
+          }
+
+          .date-text {
+            font-size: 28px;
+            color: $primary;
+            font-weight: 600;
+            padding: 10px 32px;
+            background: rgba(140, 186, 128, 0.08);
+            border-radius: 32px;
+            backdrop-filter: blur(12px);
+            box-shadow:
+              0 2px 12px rgba(140, 186, 128, 0.1),
+              inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            position: relative;
+            z-index: 1;
+
+            &::before {
+              content: '';
+              position: absolute;
+              inset: 0;
+              background: rgba(140, 186, 128, 0.08);
+              border-radius: inherit;
+              z-index: -1;
+              transition: transform 0.3s ease;
+            }
+
+            &:hover::before {
+              transform: scale(1.05);
+            }
+          }
+        }
+
+        .records-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 32px 24px;
+          padding: 0 16px;
+
+          @media screen and (min-width: 768px) {
+            grid-template-columns: repeat(3, 1fr);
+          }
+        }
+      }
+
+      .loading-tip,
+      .no-more-tip {
+        text-align: center;
+        padding: 32px 0;
+        color: rgba(0, 0, 0, 0.35);
+        font-size: 26px;
+        font-weight: 300;
+        letter-spacing: 1px;
+        position: relative;
+
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          width: 60px;
+          height: 1px;
+          background: rgba(0, 0, 0, 0.1);
+        }
+
+        &::before {
+          left: 30%;
+        }
+
+        &::after {
+          right: 30%;
+        }
+      }
+    }
+  }
+
+  // 添加动画关键帧
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  // 优化发布按钮
+  .float-publish-btn {
+    position: fixed;
+    right: 32px;
+    bottom: 120px;
+    width: 120px !important;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, lighten($primary, 5%), $primary);
+    box-shadow:
+      0 12px 32px rgba(140, 186, 128, 0.3),
+      inset 0 2px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .plus {
+      color: #fff;
+      font-size: 56px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 16px 40px rgba(140, 186, 128, 0.4),
+        inset 0 2px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    &:active {
+      transform: scale(0.95) translateY(0);
+    }
+  }
+}
+

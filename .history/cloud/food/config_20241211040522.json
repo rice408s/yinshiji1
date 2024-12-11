@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "httpApi": {
+      "addWhitelist": [
+        "dashscope.aliyuncs.com"
+      ]
+    }
+  }
+}

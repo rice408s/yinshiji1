@@ -1,0 +1,64 @@
+@import "../../styles/variables.scss";
+
+.index {
+  min-height: 100vh;
+  background: $color-background;
+  padding: $spacing-base;
+
+  .records-list {
+    height: 100vh;
+
+    .records-container {
+      display: grid;
+      gap: $spacing-grid * 2;
+      padding-bottom: 140px;
+
+      .date-group {
+        background: $color-surface;
+        border-radius: $radius-lg;
+        padding: $spacing-grid;
+        box-shadow: $shadow-sm;
+
+        .date-label {
+          margin-bottom: $spacing-grid;
+
+          .date-text {
+            font-size: 20px;
+            color: $color-text-primary;
+            font-weight: 500;
+            padding: $spacing-base/2 $spacing-base;
+            background: rgba($color-primary, 0.08);
+            border-radius: $radius-md;
+            display: inline-block;
+          }
+        }
+
+        .records-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);  // 改为两列布局
+          gap: $spacing-grid;
+        }
+      }
+    }
+  }
+
+  .float-publish-btn {
+    position: fixed;
+    right: $spacing-grid;
+    bottom: $spacing-grid * 3;
+    width: 56px !important;
+    height: 56px;
+    border-radius: 50%;
+    background: $color-primary;
+    box-shadow: $shadow-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .plus {
+      color: $color-surface;
+      font-size: 32px;
+    }
+  }
+}
+

@@ -1,0 +1,82 @@
+.food-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  margin-bottom: 16px;
+
+  .card-main {
+    display: flex;
+
+    .food-image {
+      width: 140px;
+      height: 140px;
+      flex-shrink: 0;
+      object-fit: cover;
+    }
+
+    .content {
+      flex: 1;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 8px;
+
+        .food-name {
+          font-size: 30px;
+          color: #333;
+          font-weight: 600;
+          flex: 1;
+          margin-right: 12px;
+        }
+
+        .time {
+          font-size: 22px;
+          color: #999;
+          flex-shrink: 0;
+        }
+      }
+
+      .info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+
+        .quantity {
+          font-size: 24px;
+          color: #666;
+          background: rgba(0, 0, 0, 0.04);
+          padding: 2px 10px;
+          border-radius: 10px;
+        }
+
+        .calories {
+          font-size: 24px;
+          color: #ff9800;
+        }
+      }
+
+      .nutrients {
+        margin-top: auto;
+        display: flex;
+        gap: 16px;
+
+        .nutrient {
+          font-size: 22px;
+          color: #666;
+          background: #f5f6f7;
+          padding: 4px 10px;
+          border-radius: 8px;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}

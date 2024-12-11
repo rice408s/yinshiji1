@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "httpApi": {
+      "addWhitelist": [
+        "jsonplaceholder.typicode.com",
+        "dashscope.aliyuncs.com"
+      ]
+    }
+  },
+  "timeout": 20,
+  "triggers": [],
+  "retryNum": 3
+}

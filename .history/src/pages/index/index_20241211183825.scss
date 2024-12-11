@@ -1,0 +1,271 @@
+// 主题色
+$primary: #1677ff;      // 主色调 - 蚂蚁蓝
+$success: #52c41a;      // 成功色 - 绿色
+$warning: #faad14;      // 警告色 - 黄色
+$error: #ff4d4f;        // 错误色 - 红色
+$text: #262626;         // 主文本色
+$text-secondary: #595959; // 次要文本色
+$bg-base: #f5f5f5;      // 背景色
+
+.index {
+  min-height: 100vh;
+  background: $bg-base;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  // 固定头部区域
+  .header-section {
+    flex-shrink: 0;
+    padding: 24px 16px;
+    padding-bottom: 0;
+    background: $bg-base;
+    position: relative;
+    z-index: 10;
+
+    // 统计卡片
+    .stats-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+
+      .stats-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+
+        .title {
+          font-size: 28px;
+          color: $text;
+          font-weight: 600;
+        }
+
+        .date {
+          font-size: 24px;
+          color: $text-secondary;
+          background: #f5f5f5;
+          padding: 4px 12px;
+          border-radius: 20px;
+        }
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+
+        .stat-item {
+          background: #fafafa;
+          padding: 16px 12px;
+          border-radius: 12px;
+          text-align: center;
+
+          .value {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            line-height: 1.2;
+
+            &.calories { color: #fa541c; }
+            &.protein { color: #1677ff; }
+            &.carbs { color: #52c41a; }
+          }
+
+          .label {
+            font-size: 22px;
+            color: $text-secondary;
+          }
+        }
+      }
+    }
+
+    // 快速添加栏
+    .quick-add {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+      overflow-x: auto;
+      padding: 4px 0;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      .quick-item {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        background: #fff;
+        border-radius: 24px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+
+        &:active {
+          transform: scale(0.95);
+        }
+
+        .icon {
+          font-size: 32px;
+        }
+
+        .text {
+          font-size: 26px;
+          color: $text;
+          font-weight: 500;
+        }
+      }
+    }
+
+    // 每日目标
+    .daily-goals {
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+
+      .goal-item {
+        .goal-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 12px;
+
+          .label {
+            font-size: 26px;
+            color: $text;
+            font-weight: 500;
+          }
+
+          .value {
+            font-size: 24px;
+            color: $text-secondary;
+          }
+        }
+
+        .progress-bar {
+          height: 8px;
+          background: #f5f5f5;
+          border-radius: 4px;
+          overflow: hidden;
+
+          .progress {
+            height: 100%;
+            background: linear-gradient(to right, #fa541c, #ff7a45);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+          }
+        }
+      }
+    }
+
+    // 分类筛选
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      overflow-x: auto;
+      padding: 4px 0;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      .tab {
+        flex-shrink: 0;
+        padding: 8px 20px;
+        font-size: 26px;
+        color: $text-secondary;
+        background: #fff;
+        border-radius: 24px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+        transition: all 0.2s ease;
+
+        &.active {
+          color: #fff;
+          background: $primary;
+          font-weight: 500;
+        }
+
+        &:active {
+          transform: scale(0.95);
+        }
+      }
+    }
+  }
+
+  // 可滚动的记录列表
+  .records-list {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    margin: 0 16px;
+
+    .records-container {
+      padding: 16px 0;
+      padding-bottom: calc(140px + env(safe-area-inset-bottom));
+
+      .records-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .loading-tip,
+      .no-more-tip {
+        text-align: center;
+        padding: 24px 0;
+        color: $text-secondary;
+        font-size: 26px;
+      }
+    }
+  }
+
+  // 发布按钮
+  .float-publish-btn {
+    position: fixed;
+    right: 24px;
+    bottom: calc(24px + env(safe-area-inset-bottom));
+    width: 110px !important;
+    height: 110px;
+    border-radius: 50%;
+    background: $primary;
+    box-shadow:
+      0 6px 16px rgba(22, 119, 255, 0.2),
+      0 3px 6px rgba(0, 0, 0, 0.12);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+
+    &::after {
+      border: none;
+    }
+
+    .plus {
+      color: #fff;
+      font-size: 48px;
+      font-weight: 300;
+      margin-top: -4px;
+    }
+
+    &:active {
+      transform: scale(0.92);
+      box-shadow:
+        0 3px 8px rgba(22, 119, 255, 0.2),
+        0 1px 3px rgba(0, 0, 0, 0.12);
+    }
+  }
+}
+
+// 适配 iPhone 底部安全区域
+:root {
+  --safe-area-inset-bottom: env(safe-area-inset-bottom);
+}
+

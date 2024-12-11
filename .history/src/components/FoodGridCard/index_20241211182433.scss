@@ -1,0 +1,143 @@
+.food-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(148, 163, 184, 0.05);
+  margin-bottom: 12px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+
+  .card-main {
+    display: flex;
+    gap: 12px;
+    position: relative;
+    padding: 12px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 144px;
+      top: 16px;
+      bottom: 16px;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, #e2e8f0 20%, #e2e8f0 80%, transparent);
+      opacity: 0.6;
+    }
+
+    .food-image {
+      width: 120px;
+      height: 120px;
+      flex-shrink: 0;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    .content {
+      flex: 1;
+      padding: 2px 0 2px 14px;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+
+        .food-name {
+          font-size: 28px;
+          color: #1e293b;
+          font-weight: 500;
+          flex: 1;
+          margin-right: 12px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .time {
+          font-size: 20px;
+          color: #94a3b8;
+          padding: 2px 8px;
+          background: #f8fafc;
+          border-radius: 4px;
+          flex-shrink: 0;
+        }
+      }
+
+      .info {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+
+        .quantity {
+          font-size: 22px;
+          color: #475569;
+          background: #f1f5f9;
+          padding: 2px 10px;
+          border-radius: 6px;
+          border: 1px solid #e2e8f0;
+          line-height: 1.5;
+        }
+
+        .calories {
+          font-size: 22px;
+          color: #ea580c;
+          font-weight: 500;
+          background: #fff7ed;
+          padding: 2px 10px;
+          border-radius: 6px;
+          line-height: 1.5;
+        }
+      }
+
+      .nutrients {
+        margin-top: auto;
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+
+        .nutrient {
+          font-size: 20px;
+          padding: 2px 8px;
+          border-radius: 4px;
+          white-space: nowrap;
+          transition: transform 0.15s ease;
+          line-height: 1.5;
+
+          &:nth-child(1) {
+            color: #047857;
+            background: #f0fdf4;
+            border: 1px solid #dcfce7;
+          }
+
+          &:nth-child(2) {
+            color: #1d4ed8;
+            background: #f0f7ff;
+            border: 1px solid #dbeafe;
+          }
+
+          &:nth-child(3) {
+            color: #b45309;
+            background: #fffbeb;
+            border: 1px solid #fef3c7;
+          }
+
+          &:active {
+            transform: scale(0.95);
+          }
+        }
+      }
+    }
+  }
+
+  &:active {
+    transform: scale(0.995);
+    background: #fafafa;
+    border-color: #cbd5e1;
+  }
+}
