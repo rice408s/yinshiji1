@@ -9,21 +9,9 @@ import Taro, {
 } from '@tarojs/taro'
 import { useEffect, useState } from 'react'
 import DetailFoodCard from '../../components/DetailFoodCard'
+import { formatDate } from '../../utils/format'
+import { formatLocalTime } from '../../utils/date'
 import './index.scss'
-
-// 新增时间格式化函数
-const formatRecordTime = (date: string | Date) => {
-  const d = new Date(date)
-  const month = String(d.getMonth() + 1).padStart(2, '0')
-  const day = String(d.getDate()).padStart(2, '0')
-  const hour = String(d.getHours()).padStart(2, '0')
-  const minute = String(d.getMinutes()).padStart(2, '0')
-
-  return {
-    date: `${month}-${day}`,
-    time: `${hour}:${minute}`
-  }
-}
 
 interface FoodRecord {
   id: string
@@ -141,7 +129,7 @@ export default function Detail() {
       <View className='detail-page'>
         <View className='loading'>
           <View className='loading-spinner' />
-          <Text>���载中...</Text>
+          <Text>加载中...</Text>
         </View>
       </View>
     )
@@ -193,10 +181,7 @@ export default function Detail() {
           <View className='info-item'>
             <Text className='label'>记录时间</Text>
             <Text className='value'>
-              {record.createdAt && (() => {
-                const { date, time } = formatRecordTime(record.createdAt)
-                return `${date} ${time}`
-              })()}
+              {formatDate(formatLocalTime(record.createdAt), 'MM-DD HH:mm')}
             </Text>
           </View>
         </View>

@@ -58,6 +58,20 @@ exports.main = async (event, context) => {
         })
         const imageUrl = `${fileList[0].tempFileURL}/zip`
 
+        // 使用当天日期和时间字符串创建日期对象
+        const [hours, minutes] = (foodData.time || '').split(':').map(Number)
+        const today = new Date()
+
+        // 使用 Date.UTC 创建 UTC 时间，这样在存储时就已经考虑了时区
+        const createdAt = new Date(Date.UTC(
+          today.getFullYear(),
+          today.getMonth(),
+          today.getDate(),
+          hours || 0,
+          minutes || 0,
+          0
+        ))
+
         // 准备要保存的数据
         const record = {
           _openid: OPENID,
@@ -69,7 +83,7 @@ exports.main = async (event, context) => {
           unit: foodData.unit,
           time: foodData.time,
           nutrients: foodData.nutrients,
-          createdAt: foodData.createdAt ? new Date(foodData.createdAt) : db.serverDate(),
+          createdAt,
           updatedAt: db.serverDate()
         }
 
@@ -228,7 +242,7 @@ exports.main = async (event, context) => {
         // 处理日期时间
         let updateData = { ...data }
         if (data.createdAt) {
-          // 直接使用入的 UTC 时间
+          // 直接使用��入的 UTC 时间
           updateData.createdAt = new Date(data.createdAt)
         }
 

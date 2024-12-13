@@ -21,7 +21,7 @@ export default function FoodRecordsList({ records }: Props) {
 
     records.forEach(record => {
       const date = formatLocalTime(record.createdAt)
-      const dateKey = date.toISOString().split('T')[0]
+      const dateKey = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
 
       if (!groups[dateKey]) {
         groups[dateKey] = []
@@ -32,11 +32,9 @@ export default function FoodRecordsList({ records }: Props) {
     return Object.entries(groups)
       .map(([date, records]) => ({
         date,
-        records: records.sort((a, b) => {
-          const dateA = formatLocalTime(a.createdAt)
-          const dateB = formatLocalTime(b.createdAt)
-          return dateB.getTime() - dateA.getTime()
-        })
+        records: records.sort((a, b) =>
+          formatLocalTime(b.createdAt).getTime() - formatLocalTime(a.createdAt).getTime()
+        )
       }))
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
   }

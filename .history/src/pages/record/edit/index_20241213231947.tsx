@@ -103,19 +103,19 @@ export default function RecordEdit() {
         description: description.trim()
       }
 
-      // 添加时间，使用本地时间
+      // 添加时间，使用 UTC 时间
       if (selectedDate && selectedTime) {
         // 创建本地时间
-        const [year, month, day] = selectedDate.split('-').map(Number)
-        const [hour, minute] = selectedTime.split(':').map(Number)
-
-        // 直接使用本地时间组件，不进行时区转换
+        const localDate = new Date(`${selectedDate}T${selectedTime}`)
+        // 转换为 UTC 时间
         data.createdAt = new Date(
-          year,
-          month - 1, // 月份从0开始
-          day,
-          hour,
-          minute
+          Date.UTC(
+            localDate.getFullYear(),
+            localDate.getMonth(),
+            localDate.getDate(),
+            localDate.getHours(),
+            localDate.getMinutes()
+          )
         )
       }
 

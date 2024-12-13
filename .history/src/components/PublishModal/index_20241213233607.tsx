@@ -73,17 +73,6 @@ export default function PublishModal({ visible, onClose }: Props) {
     if (hasNutrients) {
       try {
         setIsSubmitting(true)
-
-        const [hours, minutes] = foodData.time.split(':').map(Number)
-        const today = new Date()
-        const localDate = new Date(
-          today.getFullYear(),
-          today.getMonth(),
-          today.getDate(),
-          hours,
-          minutes
-        )
-
         const { result } = await cloud.callFunction({
           name: 'food',
           data: {
@@ -91,7 +80,7 @@ export default function PublishModal({ visible, onClose }: Props) {
             fileID,
             foodData: {
               ...foodData,
-              createdAt: localDate
+              time: foodData.time
             },
             description
           }
@@ -254,7 +243,7 @@ export default function PublishModal({ visible, onClose }: Props) {
           throw new Error(result.message)
         }
       } catch (err) {
-        console.error('上传图片��败:', err)
+        console.error('上传图片失败:', err)
         setPreviewImage('')
         showToast({ title: '上传图片失败', icon: 'error' })
       }

@@ -58,7 +58,7 @@ exports.main = async (event, context) => {
         })
         const imageUrl = `${fileList[0].tempFileURL}/zip`
 
-        // 准备要保存的数据
+        // 直接使用前端传入的 UTC 时间
         const record = {
           _openid: OPENID,
           fileID,
@@ -73,7 +73,6 @@ exports.main = async (event, context) => {
           updatedAt: db.serverDate()
         }
 
-        // 保存到数据库
         const res = await foodCollection.add({
           data: record
         })

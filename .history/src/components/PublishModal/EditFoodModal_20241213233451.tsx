@@ -38,9 +38,9 @@ const EditFoodModal = ({ visible, data, onClose, onSave }: Props) => {
       setHour(h)
       setMinute(m)
     } else {
-      const now = formatLocalTime(new Date())
-      setHour(now.getHours().toString().padStart(2, '0'))
-      setMinute(now.getMinutes().toString().padStart(2, '0'))
+      const now = new Date()
+      setHour(now.getUTCHours().toString().padStart(2, '0'))
+      setMinute(now.getUTCMinutes().toString().padStart(2, '0'))
     }
     setEditData(data)
   }, [data])

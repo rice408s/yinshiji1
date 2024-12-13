@@ -58,6 +58,18 @@ exports.main = async (event, context) => {
         })
         const imageUrl = `${fileList[0].tempFileURL}/zip`
 
+        // 使用当天日期和时间字符串创建日期对象，并减去8小时
+        const [hours, minutes] = (foodData.time || '').split(':').map(Number)
+        const today = new Date()
+        const createdAt = new Date(
+          today.getFullYear(),
+          today.getMonth(),
+          today.getDate(),
+          (hours || 0) - 8,  // 直接减去8小时
+          minutes || 0,
+          0
+        )
+
         // 准备要保存的数据
         const record = {
           _openid: OPENID,
@@ -69,7 +81,7 @@ exports.main = async (event, context) => {
           unit: foodData.unit,
           time: foodData.time,
           nutrients: foodData.nutrients,
-          createdAt: foodData.createdAt ? new Date(foodData.createdAt) : db.serverDate(),
+          createdAt,
           updatedAt: db.serverDate()
         }
 
@@ -228,8 +240,10 @@ exports.main = async (event, context) => {
         // 处理日期时间
         let updateData = { ...data }
         if (data.createdAt) {
-          // 直接使用入的 UTC 时间
-          updateData.createdAt = new Date(data.createdAt)
+          // 创建一个新的日期对象并添加8小时来抵消时区差异
+          const date = new Date(data.createdAt)
+          date.setHours(date.getHours() + 8)
+          updateData.createdAt = date
         }
 
         // 添加更新时间

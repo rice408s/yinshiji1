@@ -2,7 +2,6 @@ import { View, Text, Input, Textarea, Image, Picker } from '@tarojs/components'
 import { useRouter, showToast, navigateBack , cloud } from '@tarojs/taro'
 import { useEffect, useState } from 'react'
 import { formatDate } from '../../../utils/format'
-import { formatDateTime } from '../../../utils/date'
 
 import FoodCard from '../../../components/PublishModal/FoodCard'
 import './index.scss'
@@ -45,9 +44,9 @@ export default function RecordEdit() {
 
   useEffect(() => {
     if (record?.createdAt) {
-      const { date, time } = formatDateTime(record.createdAt)
-      setSelectedDate(date)
-      setSelectedTime(time)
+      const date = new Date(record.createdAt)
+      setSelectedDate(formatDate(date, 'YYYY-MM-DD'))
+      setSelectedTime(formatDate(date, 'HH:mm'))
     }
   }, [record])
 
@@ -103,20 +102,9 @@ export default function RecordEdit() {
         description: description.trim()
       }
 
-      // 添加时间，使用本地时间
+      // 添加时间
       if (selectedDate && selectedTime) {
-        // 创建本地时间
-        const [year, month, day] = selectedDate.split('-').map(Number)
-        const [hour, minute] = selectedTime.split(':').map(Number)
-
-        // 直接使用本地时间组件，不进行时区转换
-        data.createdAt = new Date(
-          year,
-          month - 1, // 月份从0开始
-          day,
-          hour,
-          minute
-        )
+        data.createdAt = new Date(`${selectedDate} ${selectedTime}`)
       }
 
       if (count) {

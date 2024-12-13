@@ -103,20 +103,9 @@ export default function RecordEdit() {
         description: description.trim()
       }
 
-      // 添加时间，使用本地时间
+      // 添加时间，直接使用用户选择的时间
       if (selectedDate && selectedTime) {
-        // 创建本地时间
-        const [year, month, day] = selectedDate.split('-').map(Number)
-        const [hour, minute] = selectedTime.split(':').map(Number)
-
-        // 直接使用本地时间组件，不进行时区转换
-        data.createdAt = new Date(
-          year,
-          month - 1, // 月份从0开始
-          day,
-          hour,
-          minute
-        )
+        data.createdAt = new Date(`${selectedDate}T${selectedTime}:00Z`)
       }
 
       if (count) {
