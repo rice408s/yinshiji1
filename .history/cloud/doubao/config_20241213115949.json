@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "openapi": [
+    ]
+  },
+  "env": {
+    "DOUBAO_API_KEY": "your_api_key_here",
+    "DOUBAO_MODEL_ID": "your_model_endpoint_id_here"
+  }
+}

@@ -1,0 +1,61 @@
+.stats-wrapper {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.calories-goal {
+  flex: 1;
+  padding: 20px;
+  background: #fff;
+  border-radius: 16px;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+
+    .title {
+      font-size: 28px;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .goal {
+      font-size: 24px;
+      color: #666;
+    }
+  }
+
+  .progress-bar {
+    height: 4px;
+    background: #f0f0f0;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 12px;
+
+    .progress {
+      height: 100%;
+      background: linear-gradient(to right, #52c41a, #1890ff);
+      background: linear-gradient(to right, #52c41a 30%, #1890ff);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+  }
+
+  .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+
+    .current {
+      color: #1890ff;
+    }
+
+    .remaining {
+      color: #666;
+    }
+  }
+}

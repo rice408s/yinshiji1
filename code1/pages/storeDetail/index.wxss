@@ -1,9 +1,0 @@
-/* pages/storeDetail/index.wxss */
-@import "/assets/css/flex.wxss";
-.swiper,.swiper .img{
-  width: 750rpx;
-  height: 500rpx;
-}
-.swiper .img{
-  vertical-align: middle;
-}

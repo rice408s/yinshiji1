@@ -1,0 +1,72 @@
+.stats-card {
+  padding: 20px 16px;
+
+  .title {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .nutrients-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .nutrient-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .info {
+        display: flex;
+        align-items: baseline;
+        gap: 4px;
+
+        .value {
+          font-size: 32px;
+          font-weight: 500;
+          color: #333;
+        }
+
+        .unit {
+          font-size: 24px;
+          color: #666;
+        }
+      }
+
+      .progress-bar {
+        height: 6px;
+        background: #f0f0f0;
+        border-radius: 3px;
+        overflow: hidden;
+
+        .progress {
+          height: 100%;
+          border-radius: 3px;
+          transition: width 0.3s ease;
+
+          &.calories {
+            background: linear-gradient(to right, #1890ff, #40a9ff);
+          }
+
+          &.protein {
+            background: linear-gradient(to right, #1890ff, #40a9ff);
+          }
+
+          &.fat {
+            background: linear-gradient(to right, #f5222d, #ff4d4f);
+          }
+
+          &.carbs {
+            background: linear-gradient(to right, #52c41a, #73d13d);
+          }
+        }
+      }
+
+      .label {
+        font-size: 24px;
+        color: #666;
+      }
+    }
+  }
+}

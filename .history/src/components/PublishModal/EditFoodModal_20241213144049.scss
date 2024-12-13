@@ -1,0 +1,166 @@
+.edit-food-modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-out;
+
+  .mask {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+
+  .drawer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    border-radius: 24px 24px 0 0;
+    padding-bottom: env(safe-area-inset-bottom);
+    transform: translateY(100%);
+    animation: slideUp 0.3s ease-out 0.1s forwards;
+
+    .drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 32px 32px 24px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+      .title {
+        font-size: 36px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .close-btn {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+        color: #999;
+        margin: -16px -16px 0 0;
+        transition: all 0.2s ease;
+
+        &:active {
+          transform: scale(0.9);
+          color: #666;
+        }
+      }
+    }
+
+    .drawer-content {
+      padding: 32px;
+
+      .form-item {
+        margin-bottom: 32px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .label {
+          display: block;
+          font-size: 28px;
+          color: #666;
+          margin-bottom: 16px;
+        }
+
+        .input {
+          width: 100%;
+          height: 88px;
+          background: #f8f9fa;
+          border-radius: 16px;
+          padding: 0 32px;
+          font-size: 32px;
+          color: #333;
+          box-sizing: border-box;
+          border: 2px solid transparent;
+          transition: all 0.2s ease;
+
+          &:focus {
+            background: #fff;
+            border-color: #8CBA80;
+          }
+
+          &::placeholder {
+            color: #999;
+          }
+        }
+      }
+    }
+
+    .drawer-footer {
+      padding: 24px 32px;
+      display: flex;
+      gap: 24px;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+
+      .btn {
+        flex: 1;
+        height: 88px;
+        border-radius: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+
+        &:active {
+          transform: scale(0.98);
+        }
+      }
+
+      .cancel-btn {
+        background: #f5f5f5;
+        color: #666;
+
+        &:active {
+          background: #eee;
+        }
+      }
+
+      .confirm-btn {
+        background: #8CBA80;
+        color: #fff;
+        box-shadow: 0 4px 12px rgba(140, 186, 128, 0.2);
+
+        &:active {
+          background: darken(#8CBA80, 5%);
+          box-shadow: 0 2px 8px rgba(140, 186, 128, 0.15);
+        }
+      }
+    }
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,90 @@
+// 添加主题色变量
+$text: #262626;         // 主文本色
+$text-secondary: #595959; // 次要文本色
+
+.food-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 20px;
+  margin-bottom: 16px;
+  width: 100%;
+  aspect-ratio: 1;  // 保持正方形
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+
+  &:active {
+    transform: scale(0.98);
+    background: #fafafa;
+  }
+
+  .card-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .food-image {
+      width: 100%;
+      height: 65%;  // 图片占据卡片高度的65%
+      border-radius: 16px;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .content {
+      height: 35%;  // 内容占据卡片高度的35%
+      padding: 16px 0 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .food-title {
+        .food-name {
+          font-size: 32px;
+          font-weight: 600;
+          color: #333;
+          display: block;
+          line-height: 1.3;
+        }
+      }
+
+      .food-info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .food-amount {
+          font-size: 26px;
+          color: #666;
+          background: linear-gradient(to right, rgba(140, 186, 128, 0.1), rgba(140, 186, 128, 0.05));
+          padding: 6px 12px;
+          border-radius: 10px;
+          font-weight: 500;
+        }
+
+        .calories {
+          font-size: 28px;
+          background: linear-gradient(135deg, #ff6b6b, #ff8787);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          font-weight: 600;
+          position: relative;
+          padding-left: 28px;
+
+          &::before {
+            content: '🔥';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            -webkit-text-fill-color: initial;
+          }
+        }
+      }
+    }
+  }
+}

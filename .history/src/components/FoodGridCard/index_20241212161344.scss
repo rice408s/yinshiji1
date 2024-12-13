@@ -1,0 +1,107 @@
+// 添加主题色变量
+$text: #262626;         // 主文本色
+$text-secondary: #595959; // 次要文本色
+
+.food-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 24px;
+  margin-bottom: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease;
+
+  &:active {
+    transform: scale(0.98);
+    background: #fafafa;
+  }
+
+  .card-main {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    .food-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 20px;
+      object-fit: cover;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .content {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 16px;
+
+        .food-name {
+          font-size: 36px;
+          font-weight: 600;
+          color: #333;
+          flex: 1;
+          min-width: 0;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .time {
+          font-size: 24px;
+          color: #999;
+          padding: 6px 12px;
+          background: #f5f5f5;
+          border-radius: 8px;
+          flex-shrink: 0;
+        }
+      }
+
+      .info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+
+        .food-amount {
+          font-size: 28px;
+          color: #666;
+          background: linear-gradient(to right, rgba(140, 186, 128, 0.1), rgba(140, 186, 128, 0.05));
+          padding: 8px 16px;
+          border-radius: 12px;
+          font-weight: 500;
+        }
+
+        .calories {
+          font-size: 32px;
+          color: #ff6b6b;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 8px 16px;
+          background: rgba(255, 107, 107, 0.1);
+          border-radius: 12px;
+
+          .icon {
+            font-size: 24px;
+          }
+
+          .value {
+            background: linear-gradient(135deg, #ff6b6b, #ff8787);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+        }
+      }
+    }
+  }
+}

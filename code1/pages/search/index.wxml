@@ -1,9 +1,0 @@
-<view class="page">
-  <custom-navigation-bar id="customNavigationBar">
-    <view style="width: 100%;height: 100%;" class="search">
-      <view class="icon iconfont icon-search"></view>
-      <input type="text" class="input" bindinput="input" placeholder="请输入商品名"/>
-    </view>
-  </custom-navigation-bar>
-  顶部改为搜索区域
-</view>

@@ -1,0 +1,55 @@
+.calories-goal {
+  background: #fff;
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+
+    .title {
+      font-size: 28px;
+      color: #666;
+    }
+
+    .goal {
+      font-size: 24px;
+      color: #999;
+    }
+  }
+
+  .progress-bar {
+    height: 8px;
+    background: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 12px;
+
+    .progress {
+      height: 100%;
+      background: linear-gradient(to right, #52c41a, #1890ff);
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+  }
+
+  .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .current {
+      font-size: 24px;
+      color: #1890ff;
+      font-weight: 500;
+    }
+
+    .remaining {
+      font-size: 24px;
+      color: #999;
+    }
+  }
+}

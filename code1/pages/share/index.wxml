@@ -1,8 +1,0 @@
-<view class="page">
-  <custom-navigation-bar id="customNavigationBar" background='linear-gradient(to right,#002235, #00535d, #52a78a)' color='#c1dcb9'>
-    <view style="width: 100%;height: 100%;" class="flex-col-center">
-      分享页面
-    </view>
-  </custom-navigation-bar>
-  自定义顶部文字颜色及背景色
-</view>

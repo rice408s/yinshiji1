@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "openapi": [
+    ]
+  },
+  "env": {
+    "DOUBAO_API_KEY": "89849086-a530-4f0b-9425-a9d0fdcd54dc",
+    "DOUBAO_MODEL_ID": "ep-20241213102609-w2qqm"
+  }
+}

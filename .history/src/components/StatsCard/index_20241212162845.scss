@@ -1,0 +1,116 @@
+.stats-card {
+  padding: 20px 16px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  .calories-ring {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: #f0f0f0;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      right: 8px;
+      bottom: 8px;
+      background: #fff;
+      border-radius: 50%;
+    }
+
+    .ring-progress {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      background: conic-gradient(#1890ff 0%, transparent 0%);
+      border-radius: 100% 0 0 100% / 50%;
+      transform-origin: 100% 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .ring-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 1;
+
+      .value {
+        display: block;
+        font-size: 36px;
+        font-weight: 500;
+        color: #1890ff;
+        line-height: 1.2;
+      }
+
+      .label {
+        font-size: 24px;
+        color: #666;
+      }
+    }
+  }
+
+  .nutrients-bars {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    height: 140px;
+    gap: 20px;
+
+    .bar-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+
+      .label {
+        font-size: 24px;
+        color: #666;
+      }
+
+      .bar-wrapper {
+        flex: 1;
+        width: 8px;
+        background: #f0f0f0;
+        border-radius: 4px;
+        overflow: hidden;
+        position: relative;
+
+        .bar {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          transition: height 0.3s ease;
+          border-radius: 4px;
+
+          &.protein {
+            background: #1890ff;
+          }
+
+          &.fat {
+            background: #f5222d;
+          }
+
+          &.carbs {
+            background: #52c41a;
+          }
+        }
+      }
+
+      .value {
+        font-size: 24px;
+        font-weight: 500;
+        color: #333;
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+// 主题色
+$primary: #4263eb;      // 主色调 - 靛蓝色
+$success: #12b886;      // 成功色 - 薄荷绿
+$warning: #f59f00;      // 警告色 - 金黄
+$error: #f03e3e;        // 错误色 - 朱红
+$text: #212529;         // 主文本色
+$text-secondary: #495057; // 次要文本色
+$bg-base: #f8f9fa;      // 背景色 - 更柔和的灰
+
+// 营养素配色
+$protein-color: #4263eb; // 蛋白质 - 靛蓝
+$fat-color: #f76707;    // 脂肪 - 橙色
+$carbs-color: #37b24d;  // 碳水 - 翠绿
+
+// 添加按钮专用渐变色
+$btn-gradient-from: #12b886; // 薄荷绿起始色
+$btn-gradient-to: #20c997;   // 薄荷绿结束色
+
+.index {
+  min-height: 100vh;
+  background: #f5f5f5;
+  position: relative;
+  padding-bottom: calc(120px + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+}
+
+// 适配 iPhone 底部安全区域
+:root {
+  --safe-area-inset-bottom: env(safe-area-inset-bottom);
+}
+

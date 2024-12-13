@@ -1,0 +1,96 @@
+.stats-card {
+  padding: 20px 16px;
+
+  .stats-grid {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+
+    .stat-item.calories {
+      width: 140px;
+      text-align: center;
+      padding: 16px;
+      background: rgba(24, 144, 255, 0.1);
+      border-radius: 16px;
+
+      .value {
+        display: block;
+        font-size: 40px;
+        font-weight: 500;
+        color: #1890ff;
+        line-height: 1.2;
+        margin-bottom: 4px;
+      }
+
+      .label {
+        display: block;
+        font-size: 24px;
+        color: #666;
+        margin-bottom: 8px;
+      }
+
+      .goal {
+        display: block;
+        font-size: 22px;
+        color: #999;
+      }
+    }
+
+    .nutrients {
+      flex: 1;
+      display: flex;
+      justify-content: space-around;
+      height: 140px;
+      gap: 20px;
+
+      .bar-item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+
+        .label {
+          font-size: 24px;
+          color: #666;
+        }
+
+        .bar-wrapper {
+          flex: 1;
+          width: 8px;
+          background: #f0f0f0;
+          border-radius: 4px;
+          overflow: hidden;
+          position: relative;
+
+          .bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            transition: height 0.3s ease;
+            border-radius: 4px;
+
+            &.protein {
+              background: #1890ff;
+            }
+
+            &.fat {
+              background: #f5222d;
+            }
+
+            &.carbs {
+              background: #52c41a;
+            }
+          }
+        }
+
+        .value {
+          font-size: 24px;
+          font-weight: 500;
+          color: #333;
+        }
+      }
+    }
+  }
+}

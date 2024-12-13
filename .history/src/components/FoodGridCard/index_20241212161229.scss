@@ -1,0 +1,86 @@
+// 添加主题色变量
+$text: #262626;         // 主文本色
+$text-secondary: #595959; // 次要文本色
+
+.food-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 24px;
+  margin-bottom: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease;
+
+  &:active {
+    transform: scale(0.98);
+    background: #fafafa;
+  }
+
+  .card-main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .food-image {
+      width: 100%;
+      height: 240px;
+      border-radius: 16px;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+
+      .food-title {
+        flex: 1;
+        min-width: 0;
+
+        .food-name {
+          font-size: 36px;
+          font-weight: 600;
+          color: #333;
+          display: block;
+          line-height: 1.3;
+          margin-bottom: 8px;
+        }
+
+        .food-amount {
+          font-size: 28px;
+          color: #666;
+          background: linear-gradient(to right, rgba(140, 186, 128, 0.1), rgba(140, 186, 128, 0.05));
+          padding: 8px 16px;
+          border-radius: 12px;
+          font-weight: 500;
+          display: inline-block;
+        }
+      }
+
+      .calories {
+        font-size: 32px;
+        color: #ff6b6b;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 20px;
+        background: rgba(255, 107, 107, 0.1);
+        border-radius: 16px;
+
+        .icon {
+          font-size: 28px;
+        }
+
+        .value {
+          background: linear-gradient(135deg, #ff6b6b, #ff8787);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      }
+    }
+  }
+}

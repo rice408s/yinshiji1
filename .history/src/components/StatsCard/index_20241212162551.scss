@@ -1,0 +1,51 @@
+.stats-card {
+  padding: 20px 16px;
+
+  .title {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .stats-grid {
+    display: flex;
+    gap: 16px;
+
+    .stat-item {
+      flex: 1;
+      background: #f8f9fa;
+      padding: 12px;
+      border-radius: 12px;
+      text-align: center;
+
+      .value {
+        font-size: 36px;
+        font-weight: 500;
+        margin-bottom: 4px;
+      }
+
+      &.protein {
+        background: rgba(24, 144, 255, 0.1);
+        .value { color: #1890ff; }
+        .label { color: #1890ff; }
+      }
+
+      &.fat {
+        background: rgba(245, 34, 45, 0.1);
+        .value { color: #f5222d; }
+        .label { color: #f5222d; }
+      }
+
+      &.carbs {
+        background: rgba(82, 196, 26, 0.1);
+        .value { color: #52c41a; }
+        .label { color: #52c41a; }
+      }
+
+      .label {
+        font-size: 24px;
+        opacity: 0.8;
+      }
+    }
+  }
+}

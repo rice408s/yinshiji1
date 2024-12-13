@@ -1,0 +1,90 @@
+.stats-wrapper {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.calories-goal {
+  flex: 1;
+  padding: 20px;
+  background: #fff;
+  border-radius: 16px;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+
+    .title {
+      font-size: 28px;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .goal {
+      font-size: 24px;
+      color: #666;
+    }
+  }
+
+  .progress-bar {
+    height: 4px;
+    background: #f0f0f0;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 12px;
+
+    .progress {
+      height: 100%;
+      background: linear-gradient(to right, #52c41a, #1890ff);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+  }
+
+  .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+
+    .current {
+      color: #1890ff;
+    }
+
+    .remaining {
+      color: #666;
+    }
+  }
+
+  .suggestion {
+    margin-top: 16px;
+    padding: 12px;
+    background: rgba(24, 144, 255, 0.05);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .icon {
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .text {
+      font-size: 24px;
+      color: #666;
+      flex: 1;
+    }
+  }
+}
+
+.stats-card {
+  flex: 1;
+  padding: 20px;
+  background: #fff;
+  border-radius: 16px;
+
+  // ... 其他样式保持不变 ...
+}

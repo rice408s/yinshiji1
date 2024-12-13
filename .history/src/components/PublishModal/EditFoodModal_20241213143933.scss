@@ -1,0 +1,143 @@
+.edit-food-modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 32px;
+
+  .content {
+    width: 100%;
+    max-width: 600px;
+    background: #fff;
+    border-radius: 24px;
+    padding: 32px;
+    animation: slideUp 0.3s ease-out;
+    position: relative;
+    box-sizing: border-box;
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+
+      .title {
+        font-size: 36px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .close-btn {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+        color: #999;
+        margin: -16px -16px 0 0;
+        transition: all 0.2s ease;
+
+        &:active {
+          transform: scale(0.9);
+          color: #666;
+        }
+      }
+    }
+
+    .form {
+      .form-item {
+        margin-bottom: 24px;
+
+        .label {
+          display: block;
+          font-size: 28px;
+          color: #666;
+          margin-bottom: 12px;
+        }
+
+        .input {
+          width: 100%;
+          height: 80px;
+          background: #f5f5f5;
+          border-radius: 12px;
+          padding: 0 24px;
+          font-size: 32px;
+          color: #333;
+          box-sizing: border-box;
+          border: 1px solid transparent;
+          transition: all 0.2s ease;
+
+          &:focus {
+            background: #fff;
+            border-color: #8CBA80;
+          }
+
+          &::placeholder {
+            color: #999;
+          }
+        }
+      }
+    }
+
+    .footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 16px;
+      margin-top: 32px;
+
+      .cancel-btn, .save-btn {
+        width: 160px;
+        height: 80px;
+        border-radius: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+
+        &:active {
+          transform: scale(0.95);
+        }
+      }
+
+      .cancel-btn {
+        background: #f5f5f5;
+        color: #666;
+
+        &:active {
+          background: #eee;
+        }
+      }
+
+      .save-btn {
+        background: #8CBA80;
+        color: #fff;
+        box-shadow: 0 4px 12px rgba(140, 186, 128, 0.2);
+
+        &:active {
+          background: darken(#8CBA80, 5%);
+          box-shadow: 0 2px 8px rgba(140, 186, 128, 0.15);
+        }
+      }
+    }
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
