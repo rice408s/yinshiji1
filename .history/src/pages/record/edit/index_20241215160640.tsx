@@ -5,13 +5,6 @@ import { formatDateTime } from '../../../utils/date'
 
 import './index.scss'
 
-interface CloudResponse {
-  result: {
-    code: number
-    data?: any
-    message?: string
-  }
-}
 
 export default function RecordEdit() {
   const router = useRouter()
@@ -39,15 +32,7 @@ export default function RecordEdit() {
 
   useEffect(() => {
     if (record?.createdAt) {
-      const d = new Date(record.createdAt)
-      // 格式化日期为 YYYY-MM-DD
-      const date = d.getFullYear() + '-' +
-        (d.getMonth() + 1).toString().padStart(2, '0') + '-' +
-        d.getDate().toString().padStart(2, '0')
-      // 格式化时间为 HH:mm
-      const time = d.getHours().toString().padStart(2, '0') + ':' +
-        d.getMinutes().toString().padStart(2, '0')
-
+      const { date, time } = formatDateTime(record.createdAt)
       setSelectedDate(date)
       setSelectedTime(time)
     }
@@ -55,15 +40,15 @@ export default function RecordEdit() {
 
   const fetchRecord = async () => {
     try {
-      const res = await cloud.callFunction({
+      const res: any = await cloud.callFunction({
         name: 'food',
         data: {
           action: 'getDetail',
           id
         }
-      }) as unknown as CloudResponse
+      })
 
-      if (res.result?.code === 200 && res.result.data?.record) {
+      if (res.result.code === 200 && res.result.data?.record) {
         const recordData = res.result.data.record
         setImageUrl(recordData.imageUrl)
         setFileID(recordData.fileID)
@@ -179,19 +164,8 @@ export default function RecordEdit() {
 
   // 处理提交
   const handleSubmit = async () => {
-    if (!selectedDate || !selectedTime) return
-
-    const [year, month, day] = selectedDate.split('-').map(Number)
-    const [hour, minute] = selectedTime.split(':').map(Number)
-
-    // 创建本地时间
-    const dateTime = new Date(
-      year,
-      month - 1, // 月份从0开始
-      day,
-      hour,
-      minute
-    )
+    // 合并日期和时间
+    const dateTime = new Date(`${selectedDate} ${selectedTime}`)
 
     try {
       const res = await cloud.callFunction({
@@ -200,22 +174,13 @@ export default function RecordEdit() {
           action: 'updateRecord',
           id,
           data: {
-            food,
-            count: parseFloat(count),
-            unit,
-            description,
-            createdAt: dateTime,
-            nutrients: {
-              calories: parseFloat(calories),
-              carbohydrates: parseFloat(carbs),
-              protein: parseFloat(protein),
-              fat: parseFloat(fat)
-            }
+            ...formData,
+            createdAt: dateTime
           }
         }
-      }) as unknown as CloudResponse
+      })
 
-      if (res.result?.code === 200) {
+      if (res.result.code === 200) {
         showToast({
           title: '保存成功',
           icon: 'success'

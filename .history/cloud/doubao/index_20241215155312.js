@@ -179,7 +179,7 @@ async function analyzeNutrition(foodData) {
         data: nutritionData
       }
     } catch (err) {
-      console.error('营养数据解析失��:', content)
+      console.error('营养数据解析失败:', content)
       return {
         code: 500,
         message: '营养数据格式错误'
@@ -194,12 +194,21 @@ async function analyzeNutrition(foodData) {
   }
 }
 
-// 修改建议分析函数
-async function analyzeSuggestion(dietSummary) {
+// 添加新的建议分析函数
+async function analyzeSuggestion(records) {
   try {
+    // 准备用户饮食数据
+    const dietData = records.map(record => ({
+      food: record.food,
+      count: record.count,
+      unit: record.unit,
+      nutrients: record.nutrients,
+      time: record.time
+    }))
+
     const systemPrompt = `你是一位专业的营养师，擅长分析每日饮食数据并给出简短建议。你的建议应该简洁明了，针对性强，且易于执行。每条建议不超过30字。`
 
-    const userPrompt = `基于以下饮食记录，给出改善建议：${dietSummary}`
+    const userPrompt = `基于以下饮食记录，给出改善建议：${JSON.stringify(dietData)}`
 
     const response = await axios.post(API_URL, {
       model: SUGGEST_MODEL_ID,
@@ -233,9 +242,9 @@ async function analyzeSuggestion(dietSummary) {
   }
 }
 
-// 修改云函数入口函数
+// 云函数入口函数
 exports.main = async (event, context) => {
-  const { action = 'analyze', imageUrl, prompt, foodData, dietSummary } = event
+  const { action = 'analyze', imageUrl, prompt, foodData, records } = event
 
   switch (action) {
     case 'analyze':
@@ -245,13 +254,13 @@ exports.main = async (event, context) => {
       return await analyzeNutrition(foodData)
 
     case 'suggest':
-      if (!dietSummary || typeof dietSummary !== 'string') {
+      if (!records || !Array.isArray(records)) {
         return {
           code: 400,
-          message: '请提供有效的饮食记录摘要'
+          message: '请提供有效的饮食记录'
         }
       }
-      return await analyzeSuggestion(dietSummary)
+      return await analyzeSuggestion(records)
 
     default:
       return {

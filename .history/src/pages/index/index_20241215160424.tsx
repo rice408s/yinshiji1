@@ -254,11 +254,7 @@ export default function Index() {
 详细记录：
 ${todayRecords.map((record, index) => `
 ${index + 1}. ${record.food}
-   时间：${new Date(record.createdAt).toLocaleTimeString('zh-CN', {
-     hour: '2-digit',
-     minute: '2-digit',
-     hour12: false
-   })}
+   时间：${new Date(record.createdAt).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' })}
    数量：${record.count ? `${record.count}${record.unit || ''}` : '未记录'}
 `).join('')}
 -------------------`

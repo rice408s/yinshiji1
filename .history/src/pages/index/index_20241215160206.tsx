@@ -56,14 +56,6 @@ const generateSuggestion = (records: FoodRecord[]) => {
   }
 }
 
-interface CloudResponse {
-  result: {
-    code: number
-    data?: any
-    message?: string
-  }
-}
-
 export default function Index() {
   const [records, setRecords] = useState<FoodRecord[]>([])
   const [isLoading, setIsLoading] = useState(true)
@@ -131,9 +123,9 @@ export default function Index() {
           page: pageNum,
           pageSize: PAGE_SIZE
         }
-      }) as unknown as CloudResponse
+      })
 
-      if (res.result?.code === 200) {
+      if (res.result.code === 200) {
         const newRecords = res.result.data.records.map(record => ({
           ...record,
           createdAt: new Date(record.createdAt)
@@ -254,11 +246,7 @@ export default function Index() {
 详细记录：
 ${todayRecords.map((record, index) => `
 ${index + 1}. ${record.food}
-   时间：${new Date(record.createdAt).toLocaleTimeString('zh-CN', {
-     hour: '2-digit',
-     minute: '2-digit',
-     hour12: false
-   })}
+   时间：${new Date(record.createdAt).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' })}
    数量：${record.count ? `${record.count}${record.unit || ''}` : '未记录'}
 `).join('')}
 -------------------`
@@ -270,7 +258,7 @@ ${index + 1}. ${record.food}
           action: 'suggest',
           dietSummary: summary
         }
-      }) as unknown as CloudResponse
+      }) as any
 
       if (suggestRes.result.code === 200) {
         const newSuggestion = {

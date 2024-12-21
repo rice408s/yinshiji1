@@ -24,12 +24,6 @@ interface FoodAnalysisResult {
   count?: number
   unit?: string
   time?: string
-  nutrients?: {
-    calories: number
-    carbohydrates: number
-    protein: number
-    fat: number
-  }
 }
 
 export default function PublishModal({ visible, onClose }: Props) {
@@ -88,7 +82,7 @@ export default function PublishModal({ visible, onClose }: Props) {
       try {
         setIsSubmitting(true)
 
-        const [hours, minutes] = (foodData.time || '00:00').split(':').map(Number)
+        const [hours, minutes] = foodData.time.split(':').map(Number)
         const today = new Date()
         const localDate = new Date(
           today.getFullYear(),

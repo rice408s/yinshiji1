@@ -11,9 +11,6 @@ import './index.scss'
 
 const PAGE_SIZE = 10
 
-// 添加本地存储的key常量
-const LAST_SUGGESTION_KEY = 'last_suggestion'
-
 // 生成建议消息
 const generateSuggestion = (records: FoodRecord[]) => {
   const today = new Date().toISOString().split('T')[0]
@@ -53,14 +50,6 @@ const generateSuggestion = (records: FoodRecord[]) => {
   return {
     message: '记得多喝水，保持健康饮食习惯~',
     icon: '💧'
-  }
-}
-
-interface CloudResponse {
-  result: {
-    code: number
-    data?: any
-    message?: string
   }
 }
 
@@ -131,9 +120,9 @@ export default function Index() {
           page: pageNum,
           pageSize: PAGE_SIZE
         }
-      }) as unknown as CloudResponse
+      })
 
-      if (res.result?.code === 200) {
+      if (res.result.code === 200) {
         const newRecords = res.result.data.records.map(record => ({
           ...record,
           createdAt: new Date(record.createdAt)
@@ -186,42 +175,7 @@ export default function Index() {
     }
   }
 
-  // 保存建议到本地存储
-  const saveSuggestion = (newSuggestion: { message: string; icon: string }) => {
-    try {
-      Taro.setStorageSync(LAST_SUGGESTION_KEY, {
-        ...newSuggestion,
-        timestamp: new Date().toISOString()
-      })
-    } catch (err) {
-      console.error('保存建议失败:', err)
-    }
-  }
-
-  // 获取本地存储的建议
-  const getLastSuggestion = () => {
-    try {
-      const saved = Taro.getStorageSync(LAST_SUGGESTION_KEY)
-      if (saved && saved.timestamp) {
-        // 检查是否是今天的建议
-        const savedDate = new Date(saved.timestamp).toISOString().split('T')[0]
-        const today = new Date().toISOString().split('T')[0]
-
-        if (savedDate === today) {
-          return {
-            message: saved.message,
-            icon: saved.icon
-          }
-        }
-      }
-      return null
-    } catch (err) {
-      console.error('获取保存的建议失败:', err)
-      return null
-    }
-  }
-
-  // 修改刷新建议的函数
+  // 添加刷新建议的函数
   const handleRefreshSuggestion = async () => {
     if (!records.length) return
 
@@ -254,11 +208,7 @@ export default function Index() {
 详细记录：
 ${todayRecords.map((record, index) => `
 ${index + 1}. ${record.food}
-   时间：${new Date(record.createdAt).toLocaleTimeString('zh-CN', {
-     hour: '2-digit',
-     minute: '2-digit',
-     hour12: false
-   })}
+   时间：${new Date(record.createdAt).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' })}
    数量：${record.count ? `${record.count}${record.unit || ''}` : '未记录'}
 `).join('')}
 -------------------`
@@ -270,15 +220,13 @@ ${index + 1}. ${record.food}
           action: 'suggest',
           dietSummary: summary
         }
-      }) as unknown as CloudResponse
+      }) as any
 
       if (suggestRes.result.code === 200) {
-        const newSuggestion = {
+        setSuggestion({
           message: suggestRes.result.data.suggestion,
           icon: '🥗'
-        }
-        setSuggestion(newSuggestion)
-        saveSuggestion(newSuggestion) // 保存新建议
+        })
       }
     } catch (err) {
       console.error('刷新建议失败:', err)
@@ -289,20 +237,14 @@ ${index + 1}. ${record.food}
     }
   }
 
-  // 修改初始化建议的逻辑
+  // 初始化时设置默认建议
   useEffect(() => {
-    const lastSuggestion = getLastSuggestion()
-    if (lastSuggestion) {
-      // 如果有今天的建议，直接使用
-      setSuggestion(lastSuggestion)
-    } else if (records.length > 0) {
-      // 如果有记录但没有今天的建议
+    if (records.length > 0) {
       setSuggestion({
         message: '点击刷新按钮获取今日饮食建议~',
         icon: '🔄'
       })
     } else {
-      // 如果没有记录
       setSuggestion({
         message: '今天还没有记录饮食哦，记得及时记录~',
         icon: '🍽️'

@@ -11,10 +11,8 @@ const DOUBAO_API = 'https://api.doubao.com/api/v1/text/generations'
 
 // 模型配置
 
-const FOOD_MODEL_ID = 'ep-20241213102609-w2qqm' // 食物分析模型
-const NUTRITION_MODEL_ID = 'ep-20241213184755-mnwwz' // 营养分析模型
-const SUGGEST_MODEL_ID = 'ep-20241215152620-8dxv7' // 建议分析模型
-
+const FOOD_MODEL_ID = 'ep-20241213102609-w2qqm'
+const NUTRITION_MODEL_ID = 'ep-20241213184755-mnwwz'
 
 // 系统提示词
 const SYSTEM_PROMPT = `你是专业食物分析AI助手。识别图片中食物。
@@ -179,7 +177,7 @@ async function analyzeNutrition(foodData) {
         data: nutritionData
       }
     } catch (err) {
-      console.error('营养数据解析失��:', content)
+      console.error('营养数据解析失败:', content)
       return {
         code: 500,
         message: '营养数据格式错误'
@@ -194,48 +192,9 @@ async function analyzeNutrition(foodData) {
   }
 }
 
-// 修改建议分析函数
-async function analyzeSuggestion(dietSummary) {
-  try {
-    const systemPrompt = `你是一位专业的营养师，擅长分析每日饮食数据并给出简短建议。你的建议应该简洁明了，针对性强，且易于执行。每条建议不超过30字。`
-
-    const userPrompt = `基于以下饮食记录，给出改善建议：${dietSummary}`
-
-    const response = await axios.post(API_URL, {
-      model: SUGGEST_MODEL_ID,
-      messages: [
-        { role: 'system', content: systemPrompt },
-        { role: 'user', content: userPrompt }
-      ],
-      temperature: 0.7,
-      max_tokens: 800
-    }, {
-      headers: {
-        'Authorization': `Bearer ${API_KEY}`,
-        'Content-Type': 'application/json'
-      }
-    })
-
-    const suggestion = response.data.choices[0].message.content.trim()
-
-    return {
-      code: 200,
-      data: {
-        suggestion
-      }
-    }
-  } catch (err) {
-    console.error('生成建议失败:', err)
-    return {
-      code: 500,
-      message: err.message || '生成建议失败'
-    }
-  }
-}
-
-// 修改云函数入口函数
+// 云函数入口函数
 exports.main = async (event, context) => {
-  const { action = 'analyze', imageUrl, prompt, foodData, dietSummary } = event
+  const { action = 'analyze', imageUrl, prompt, foodData } = event
 
   switch (action) {
     case 'analyze':
@@ -243,15 +202,6 @@ exports.main = async (event, context) => {
 
     case 'nutrition':
       return await analyzeNutrition(foodData)
-
-    case 'suggest':
-      if (!dietSummary || typeof dietSummary !== 'string') {
-        return {
-          code: 400,
-          message: '请提供有效的饮食记录摘要'
-        }
-      }
-      return await analyzeSuggestion(dietSummary)
 
     default:
       return {

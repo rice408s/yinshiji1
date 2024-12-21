@@ -304,7 +304,7 @@ ${index + 1}. ${record.food}
     } else {
       // 如果没有记录
       setSuggestion({
-        message: '今天还没有记录饮食哦，记得及时记录~',
+        message: '今天还没有记录饮食，记得及时记录~',
         icon: '🍽️'
       })
     }

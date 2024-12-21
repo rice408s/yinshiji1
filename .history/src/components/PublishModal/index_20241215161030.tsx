@@ -24,12 +24,6 @@ interface FoodAnalysisResult {
   count?: number
   unit?: string
   time?: string
-  nutrients?: {
-    calories: number
-    carbohydrates: number
-    protein: number
-    fat: number
-  }
 }
 
 export default function PublishModal({ visible, onClose }: Props) {

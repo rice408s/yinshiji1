@@ -141,7 +141,7 @@ export default function Detail() {
       <View className='detail-page'>
         <View className='loading'>
           <View className='loading-spinner' />
-          <Text>加载中...</Text>
+          <Text>j载中...</Text>
         </View>
       </View>
     )

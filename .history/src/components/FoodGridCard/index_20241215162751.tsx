@@ -1,6 +1,6 @@
 import { View, Image, Text } from '@tarojs/components'
 import Taro from '@tarojs/taro'
-import { formatLocalTime, formatTimeString, formatTime } from '../../utils/date'
+import { formatLocalTime, formatTimeString } from '../../utils/date'
 import './index.scss'
 
 interface Props {
@@ -55,7 +55,11 @@ export default function FoodGridCard({
   }
 
   const day = formatDate(createdAt)
-  const time = formatTime(createdAt)
+  const time = new Date(createdAt).toLocaleTimeString('zh-CN', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  })
 
   const handleClick = () => {
     console.log('Card clicked, id:', id)

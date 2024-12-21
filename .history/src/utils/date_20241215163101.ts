@@ -29,9 +29,11 @@ export const getCurrentLocalTime = () => {
 // 格式化时间为 HH:mm
 export const formatTimeString = (date: Date | string) => {
   const d = new Date(date)
-  const hours = d.getHours().toString().padStart(2, '0')
-  const minutes = d.getMinutes().toString().padStart(2, '0')
-  return `${hours}:${minutes}`
+  return d.toLocaleTimeString('zh-CN', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  })
 }
 
 // 格式化日期为 YYYY-MM-DD
@@ -43,7 +45,9 @@ export const formatDateString = (date: Date | string) => {
 // 添加新的格式化函数
 export const formatTime = (date: string | Date): string => {
   const d = new Date(date)
-  const hours = d.getHours().toString().padStart(2, '0')
-  const minutes = d.getMinutes().toString().padStart(2, '0')
-  return `${hours}:${minutes}`
+  return d.toLocaleTimeString('zh-CN', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  })
 }
